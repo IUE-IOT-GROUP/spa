@@ -1,0 +1,170 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 12px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.container {
+    align-items: center;
+    background-color: #1E1E2D;
+    color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    text-align: center;
+    width: 100%;
+}
+
+.login-container {
+    padding: 2rem;
+    width: 450px;
+}
+
+.login-title-container {
+    margin-bottom: 2rem;
+}
+
+.login-title-container h1 {
+    font-size: 2.2rem;
+    opacity: .9;
+}
+
+.login-information-container {
+    margin-bottom: 4rem;
+}
+
+.login-information-container h2 {
+    font-size: 1.6rem;
+    margin-bottom: .5rem;
+    opacity: .7;
+}
+
+.login-information-container span {
+    font-size: 1.2rem;
+    opacity: .6;
+}
+
+.form-control {
+    background-color: rgba(255, 255, 255, .02);
+    border: 0;
+    border-radius: 50rem;
+    color: #FFFFFF;
+    line-height: 1.5;
+    margin-bottom: .5rem;
+    opacity: .7;
+    padding: 1rem 2rem;
+    transition: opacity .2s, box-shadow .2s;
+    width: 100%;
+}
+
+.form-username-container,
+.form-password-container {
+    margin-bottom: 2rem;
+}
+
+input[type=text]:focus,
+input[type=password]:focus {
+    outline: 0;
+    opacity: 1;
+    box-shadow: 0 0 .5rem #1E1E2D;
+}
+
+.form-other-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    padding: 0 2rem;
+}
+
+.checkbox-container,
+.form-other-container a {
+    color: #FFFFFF;
+    opacity: .5;
+    text-decoration: none;
+    transition: opacity .2s;
+}
+
+.checkbox-container:hover,
+.form-other-container a:hover {
+    opacity: .8;
+}
+
+
+/* Custom Checkbox Start*/
+
+
+.checkbox-container {
+    cursor: pointer;
+    padding-left: 2rem;
+    position: relative;
+}
+
+.checkbox-container input {
+    cursor: pointer;
+    height: 0;
+    opacity: 0;
+    position: absolute;
+    width: 0;
+}
+
+.checkbox-container span {
+    background-color: transparent;
+    border: 1px solid #FFFFFF;
+    border-radius: 35%;
+    height: 1.5rem;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 1.5rem;
+}
+
+.checkbox-container:hover input~.span,
+checkbox-container input:checked~.span {
+    background-color: transparent;
+}
+
+.checkbox-container span:after {
+    content: "";
+    display: none;
+    position: absolute;
+}
+
+.container input:checked~span:after {
+    display: block;
+}
+
+.container .checkbox-container span:after {
+    border: solid #FFFFFF;
+    border-width: 0 3px 3px 0;
+    height: .7rem;
+    left: .4rem;
+    top: .125rem;
+    transform: rotate(45deg);
+    width: .25rem;
+}
+
+
+/* Custom Checkbox Finish*/
+
+
+.sign-container button {
+    background-color: #FFFFFF;
+    border: 1px solid transparent;
+    border-color: #FFFFFF;
+    border-radius: 2rem;
+    color: #1E1E2D;
+    cursor: pointer;
+    font-size: 1.2rem;
+    opacity: .8;
+    padding: .75rem 2.5rem;
+    transition: background-color .2s, opacity .3s;
+}
+
+.sign-container button:hover {
+    opacity: 1;
+}

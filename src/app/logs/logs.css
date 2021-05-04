@@ -1,0 +1,39 @@
+.header-item-container li a {
+    background-color: #FFFFFF;
+    color: #1E1E2D;
+}
+
+.aside-menu-container li:nth-child(2) a {
+    background-color: #1A1A27;
+    opacity: 1;
+}
+
+.content-container {
+    top: 65px;
+}
+
+.devices-container ul {
+    grid-template-columns: repeat(auto-fill, 17%);
+}
+
+@media (max-width: 1000px) {
+    .devices-container ul {
+        grid-template-columns: repeat(auto-fill, 21.5%);
+    }
+}
+
+@media (max-width: 768px) {
+    .aside-menu-container li:nth-child(2) a {
+        background-color: #1E1E2D;
+        opacity: .85;
+    }
+
+    .aside-menu-container li:nth-child(5) a {
+        background-color: #1A1A27;
+        opacity: 1;
+    }
+
+    .devices-container ul {
+        grid-template-columns: repeat(auto-fill, 45%);
+    }
+}
