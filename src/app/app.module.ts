@@ -8,6 +8,12 @@ import { DevicesComponent } from './devices/devices.component';
 import { LoginComponent } from './login/login.component';
 import { LogsComponent } from './logs/logs.component';
 import { PlacesComponent } from './places/places.component';
+import { MainComponent } from './main/main.component';
+import { HeaderComponent } from './partials/header/header.component';
+import { FooterComponent } from './partials/footer/footer.component';
+import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { far } from '@fortawesome/free-regular-svg-icons';
 
 @NgModule({
   declarations: [
@@ -16,13 +22,21 @@ import { PlacesComponent } from './places/places.component';
     DevicesComponent,
     LoginComponent,
     LogsComponent,
-    PlacesComponent
+    PlacesComponent,
+    MainComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(library: FaIconLibrary) {
+    library.addIconPacks(fas, far);
+  }
+}
