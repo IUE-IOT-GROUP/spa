@@ -1,0 +1,258 @@
+.aside-container {
+  background-color: #1e1e2d;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  position: fixed;
+  z-index: 1;
+  width: 250px;
+}
+
+.aside-title-container {
+  display: flex;
+  background-color: #1a1a27;
+  height: 65px;
+  padding: 20px 27.5px;
+  width: 250px;
+}
+
+.aside-title-container a {
+  align-self: center;
+  color: #ffffff;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0 auto;
+  opacity: 0.9;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: opacity 0.2s;
+}
+
+.aside-title-container a:hover {
+  opacity: 1;
+}
+
+.aside-menu-container {
+  display: flex;
+  font-size: 1.2rem;
+}
+
+.aside-menu-container ul {
+  width: 100%;
+}
+
+.aside-menu-container li {
+  list-style: none;
+  width: 100%;
+}
+
+.aside-menu-container a {
+  color: #ffffff;
+  display: block;
+  opacity: 0.85;
+  padding: 1.5rem 2rem;
+  text-decoration: none;
+  transition: all 0.2s;
+  width: 100%;
+}
+
+.aside-menu-container a:hover,
+.aside-menu-container a.active {
+  background-color: #1a1a27;
+  opacity: 1;
+}
+
+.aside-menu-container fa-icon {
+  margin-right: 1rem;
+}
+
+.aside-mobile-container {
+  display: none;
+}
+
+.header-container {
+  background-color: #ffffff;
+  border-bottom: 1px solid #ebedf3;
+  display: flex;
+  font-size: 1.2rem;
+  justify-content: space-between;
+  height: 65px;
+  left: 250px;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 1;
+}
+
+.header-container a {
+  border-radius: 1rem;
+  color: #1e1e2d;
+  padding: 1rem;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.header-item-container {
+  align-items: center;
+  display: flex;
+}
+
+.header-item-container li {
+  list-style: none;
+  display: inline-block;
+  margin-left: 1.5rem;
+}
+
+.header-item-container li a.active {
+  background-color: #1e1e2d;
+  color: #ffffff;
+}
+
+.header-item-container li:hover a {
+  background-color: #1e1e2d;
+  color: #ffffff;
+}
+
+.header-container li:first-child {
+  display: none;
+}
+
+.header-user-container {
+  align-items: center;
+  display: flex;
+  margin-right: 1.5rem;
+}
+
+.header-user-container a:hover {
+  background-color: #1e1e2d;
+  color: #ffffff;
+}
+
+.header-user-container a:hover #user-first-letter {
+  background-color: #ffffff;
+  color: #1e1e2d;
+}
+
+#user-message {
+  opacity: 0.6;
+}
+
+#user-first-letter {
+  margin-left: 0.5rem;
+  text-transform: uppercase;
+  padding: 0.25rem 0.75rem;
+  border-radius: 10px;
+  background-color: #1e1e2d;
+  color: #ffffff;
+  transition: all;
+}
+
+@media (max-width: 1200px) {
+  .aside-container {
+    width: 66px;
+  }
+
+  .aside-title-container {
+    display: none;
+  }
+
+  .aside-menu-container {
+    position: absolute;
+    bottom: 0;
+  }
+
+  .aside-menu-container span {
+    display: none;
+  }
+
+  .aside-menu-container i {
+    margin-right: 0;
+  }
+
+  .header-container {
+    left: 66px;
+  }
+}
+
+@media (max-width: 768px) {
+  .aside-container {
+    left: -250px;
+    position: fixed;
+    transition: all 0.5s ease;
+    width: 250px;
+    z-index: 2;
+  }
+
+  .aside-container.show {
+    left: 0;
+  }
+
+  .aside-title-container {
+    display: inline-block;
+  }
+
+  .aside-menu-container {
+    display: inline-block;
+    position: relative;
+  }
+
+  .aside-menu-container span {
+    display: inline-block;
+  }
+
+  .aside-menu-container i {
+    margin-right: 1rem;
+  }
+
+  .aside-menu-container ul {
+    display: none;
+  }
+
+  .aside-mobile-container {
+    display: inline-block;
+    width: 100%;
+  }
+
+  .aside-mobile-container ul {
+    display: inline-block;
+  }
+
+  .aside-mobile-item-container ul {
+    width: 100%;
+  }
+
+  .aside-mobile-item-container li {
+    width: 100%;
+  }
+
+  .aside-mobile-item-container li a.active {
+    font-weight: bold;
+  }
+
+  .header-container {
+    left: 0;
+  }
+
+  .header-item-container li {
+    display: none;
+  }
+
+  .header-item-container li:first-child {
+    display: inline-block;
+  }
+
+  .header-item-container li a {
+    background-color: #ffffff;
+    color: #1e1e2d;
+  }
+
+  .header-item-container li:hover a {
+    background-color: #1e1e2d;
+    color: #ffffff;
+  }
+
+  .subheader-container {
+    left: 0;
+  }
+}

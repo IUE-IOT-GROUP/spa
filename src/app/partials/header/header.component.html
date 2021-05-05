@@ -1,0 +1,54 @@
+<div id="nav-links" class="aside-container" [ngClass]="{'show': showSidebar}">
+    <div class="aside-title-container">
+        <a routerLink="/dashboard">IoT Management System</a>
+    </div>
+    <div class="aside-menu-container">
+        <ul>
+            <li><a routerLink="#">
+                <fa-icon [icon]="'user-friends'" [fixedWidth]="true"></fa-icon><span>Users</span></a>
+            </li>
+            <li><a routerLink="/dashboard/logs" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <fa-icon [icon]="'book-open'" [fixedWidth]="true"></fa-icon><span>Logs</span></a>
+            </li>
+            <li><a routerLink="#"><fa-icon [icon]="'cog'" [fixedWidth]="true"></fa-icon><span>Settings</span></a></li>
+        </ul>
+        <div class="aside-mobile-container">
+            <div class="mobile-item-container">
+                <ul>
+                    <li><a routerLink="/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                        <fa-icon [icon]="'home'" [fixedWidth]="true"></fa-icon><span>Home</span></a>
+                    </li>
+                    <li><a routerLink="/dashboard/places" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                        <fa-icon [icon]="'map-marker'" [fixedWidth]="true"></fa-icon><span>Places</span></a>
+                    </li>
+                    <li><a routerLink="/dashboard/devices" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                        <fa-icon [icon]="'bug'" [fixedWidth]="true"></fa-icon><span>Devices</span></a>
+                    </li>
+                    <li><a routerLink="#">
+                        <fa-icon [icon]="'user-friends'" [fixedWidth]="true"></fa-icon><span>Users</span></a>
+                    </li>
+                    <li><a routerLink="/dashboard/logs" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                        <fa-icon [icon]="'book-open'" [fixedWidth]="true"></fa-icon><span>Logs</span></a>
+                    </li>
+                    <li><a routerLink="#">
+                        <fa-icon [icon]="'cog'" [fixedWidth]="true"></fa-icon><span>Settings</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="header-container">
+    <div class="header-item-container">
+        <ul>
+            <li><a (click)="toggleSidebar()" id="nav-item"><fa-icon [icon]="'bars'"></fa-icon></a></li>
+            <li><a routerLink="/dashboard" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}">Home</a></li>
+            <li><a routerLink="/dashboard/places" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}">Places</a></li>
+            <li><a routerLink="/dashboard/devices" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}">Devices</a></li>
+        </ul>
+    </div>
+    <div class="header-user-container">
+        <a href="#"><span id="user-message">Hi, </span><span id="user-name">Berkin</span><span
+                id="user-first-letter">B</span></a>
+    </div>
+</div>
