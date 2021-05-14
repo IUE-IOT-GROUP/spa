@@ -50,9 +50,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss",
-              "C:/Users/user/Desktop/spa/node_modules/bulma/css/bulma.css"
-
+              "src/styles.scss"
             ],
             "scripts": []
           },
