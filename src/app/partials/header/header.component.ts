@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   showSidebar: boolean = false;
+  enableDark: boolean = true;
   constructor(private _elementRef: ElementRef, private router: Router) {
     router.events.subscribe(() => {
       this.showSidebar = false;
@@ -18,6 +19,12 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  switchTheme(): void {
+    this.enableDark = !this.enableDark;
+
+    document.body.classList.toggle('dark');
   }
 
   onClick(event) {

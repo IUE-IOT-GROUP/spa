@@ -10,7 +10,9 @@
             <li><a routerLink="/dashboard/logs" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                 <fa-icon [icon]="'book-open'" [fixedWidth]="true"></fa-icon><span>Logs</span></a>
             </li>
-            <li><a routerLink="#"><fa-icon [icon]="'cog'" [fixedWidth]="true"></fa-icon><span>Settings</span></a></li>
+            <li><a routerLink="/dashboard/settings" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <fa-icon [icon]="'cog'" [fixedWidth]="true"></fa-icon><span>Settings</span></a>
+            </li>
         </ul>
         <div class="aside-mobile-container">
             <div class="mobile-item-container">
@@ -48,6 +50,12 @@
         </ul>
     </div>
     <div class="header-user-container">
+        <div class="night-mode-container">
+            <label class="switch">
+                <input type="checkbox" [checked]="enableDark" (change)="switchTheme()">
+                <span class="slider round"></span>
+            </label>
+        </div>
         <a href="#"><span id="user-message">Hi, </span><span id="user-name">Berkin</span><span
                 id="user-first-letter">B</span></a>
     </div>
