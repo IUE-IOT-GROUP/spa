@@ -107,8 +107,8 @@
 }
 
 .header-item-container li a.active {
-  background-color: var(--third-background-color);
-  color: var(--first-text-color);
+  background-color: var(--hover-second-background-color);
+  color: var(--hover-first-text-color);
 }
 
 .header-item-container li:hover a {
@@ -141,12 +141,12 @@
 }
 
 #user-first-letter {
-  margin-left: 0.25rem;
+  margin-left: 0.35rem;
   text-transform: uppercase;
   padding: 0.125rem 0.375rem;
   border-radius: 5px;
-  background-color: var(--third-background-color);
-  color: var(--first-text-color);
+  background-color: var(--user-first-letter-background-color);
+  color: var(--user-first-letter-text-color);
   transition: all;
 }
 

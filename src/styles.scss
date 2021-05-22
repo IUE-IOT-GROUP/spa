@@ -10,21 +10,6 @@ html {
   font-size: 12px;
   font-family: "Poppins", sans-serif;
 
-  --first-background-color: #1e1e2d;
-  --second-background-color: #1a1a27;
-  --third-background-color: #1e1e2d;
-  --forth-background-color: #1a1a27;
-  --border-bottom: #1a1a27;
-  --border-right: #1a1a27;
-  --first-text-color: #ffffff;
-  --second-text-color: #ffffff;
-  --hover-first-background-color: #1e1e2d;
-  --hover-second-background-color: #ffffff;
-  --hover-first-text-color: #1e1e2d;
-  --hover-second-text-color: #ffffff;
-}
-
-body.dark {
   --first-background-color: #ffffff;
   --second-background-color: #ebedf3;
   --third-background-color: #1e1e2d;
@@ -38,6 +23,25 @@ body.dark {
   --hover-second-background-color: #1e1e2d;
   --hover-first-text-color: #ffffff;
   --hover-second-text-color: #1e1e2d;
+  --user-first-letter-background-color: #1e1e2d;
+  --user-first-letter-text-color: #ffffff;
+}
+
+body.dark {
+  --first-background-color: #1e1e2d;
+  --second-background-color: #1a1a27;
+  --third-background-color: #1e1e2d;
+  --forth-background-color: #1a1a27;
+  --border-bottom: #1a1a27;
+  --border-right: #1a1a27;
+  --first-text-color: #ffffff;
+  --second-text-color: #ffffff;
+  --hover-first-background-color: #1e1e2d;
+  --hover-second-background-color: #ffffff;
+  --hover-first-text-color: #1e1e2d;
+  --hover-second-text-color: #ffffff;
+  --user-first-letter-background-color: #ffffff;
+  --user-first-letter-text-color: #1e1e2d;
 }
 
 body {
@@ -105,6 +109,7 @@ body {
   left: 250px;
   margin-right: 250px;
   padding: 30px;
+  padding-bottom: 87px;
   position: relative;
   top: 130px;
 }
