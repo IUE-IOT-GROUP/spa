@@ -9,16 +9,49 @@
 html {
   font-size: 12px;
   font-family: "Poppins", sans-serif;
+
+  --first-background-color: #ffffff;
+  --second-background-color: #ebedf3;
+  --third-background-color: #1e1e2d;
+  --third-hover-background-color: #1e1e2d;
+  --forth-background-color: #1a1a27;
+  --border-bottom: #ebedf3;
+  --border-right: #ebedf3;
+  --first-text-color: #ffffff;
+  --second-text-color: #1e1e2d;
+  --hover-first-background-color: #ffffff;
+  --hover-second-background-color: #1e1e2d;
+  --hover-first-text-color: #ffffff;
+  --hover-second-text-color: #1e1e2d;
+  --user-first-letter-background-color: #1e1e2d;
+  --user-first-letter-text-color: #ffffff;
+}
+
+body.dark {
+  --first-background-color: #1e1e2d;
+  --second-background-color: #1a1a27;
+  --third-background-color: #1e1e2d;
+  --forth-background-color: #1a1a27;
+  --border-bottom: #1a1a27;
+  --border-right: #1a1a27;
+  --first-text-color: RGBA(255, 255, 255, 0.7);
+  --second-text-color: RGBA(255, 255, 255, 0.7);
+  --hover-first-background-color: #1e1e2d;
+  --hover-second-background-color: #ffffff;
+  --hover-first-text-color: #1e1e2d;
+  --hover-second-text-color: #ffffff;
+  --user-first-letter-background-color: RGBA(255, 255, 255, 0.7);
+  --user-first-letter-text-color: #1e1e2d;
 }
 
 body {
-  background: #e8e9f2;
+  background: var(--second-background-color);
   min-height: 100vh;
 }
 
 .subheader-container {
-  background-color: #ffffff;
-  border-bottom: 1px solid #ebedf3;
+  background-color: var(--first-background-color);
+  border-bottom: 1px solid var(--border-bottom);
   display: flex;
   font-size: 1.2rem;
   justify-content: space-between;
@@ -49,18 +82,19 @@ body {
   display: inline-block;
   list-style: none;
   padding-right: 3rem;
+  cursor: pointer;
 }
 
 .subheader-item-container li:last-child {
   padding-right: 0;
 }
 
-.subheader-item-container li:nth-child(1) a {
+.subheader-item-container li.active a {
   opacity: 1;
 }
 
 .subheader-item-container a {
-  color: #1e1e2d;
+  color: var(--second-text-color);
   opacity: 0.5;
   text-decoration: none;
   transition: all 0.2s;
@@ -76,6 +110,7 @@ body {
   left: 250px;
   margin-right: 250px;
   padding: 30px;
+  padding-bottom: 87px;
   position: relative;
   top: 130px;
 }
@@ -97,7 +132,7 @@ body {
 }
 
 .basic-card {
-  background-color: #ffffff;
+  background-color: var(--first-background-color);
   border-radius: 0.5rem;
   box-shadow: 0 0 30px 0 rgb(82 63 105 / 5%);
   display: flex;
@@ -216,13 +251,13 @@ body {
   }
 
   .header-item-container li a {
-    background-color: #ffffff;
-    color: #1e1e2d;
+    background-color: var(--first-background-color);
+    color: var(--second-text-color);
   }
 
   .header-item-container li:hover a {
-    background-color: #1e1e2d;
-    color: #ffffff;
+    background-color: var(--hover-second-background-color);
+    color: var(--hover-first-text-color);
   }
 
   .subheader-container {

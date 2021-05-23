@@ -1,0 +1,80 @@
+.footer-container {
+    background-color: var(--first-background-color);
+    justify-content: space-between;
+    display: flex;
+    position: fixed;
+    height: 57px;
+    bottom: 0;
+    left: 250px;
+    right: 0;
+}
+
+.footer-container a {
+    border-radius: 1rem;
+    color: var(--second-text-color);
+    padding: 1rem;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.footer-item-container {
+    align-items: center;
+    display: flex;
+}
+  
+.footer-item-container li {
+    list-style: none;
+    display: inline-block;
+    margin-left: 1.5rem;
+}
+
+.footer-item-container li a.active {
+    background-color: var(--hover-second-background-color);
+    color: var(--hover-first-text-color);
+}
+  
+.footer-item-container li:hover a {
+    background-color: var(--hover-second-background-color);
+    color: var(--hover-first-text-color);
+}
+
+.footer-about-container {
+    align-items: center;
+    display: flex;
+    margin-right: 1.5rem;
+}
+
+.footer-about-container li {
+    list-style: none;
+}
+  
+.footer-about-container a:hover {
+    background-color: var(--hover-second-background-color);
+    color: var(--hover-first-text-color);
+}
+
+#team-date {
+    color: var(--second-text-color);
+    margin-right: 1.5rem;
+    opacity: .5;
+}
+
+#team-name {
+    color: var(--second-text-color);
+}
+
+
+@media (max-width: 1200px) {
+    .footer-container {
+      left: 66px;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-container {
+        width: 100%;
+        left: 0;
+        display: flex;
+        justify-content: space-between;
+    }
+}

@@ -62,7 +62,7 @@ html {
     width: 100%;
 }
 
-.form-username-container,
+.form-email-container,
 .form-password-container {
     margin-bottom: 2rem;
 }
@@ -157,12 +157,16 @@ checkbox-container input:checked~.span {
     border: 1px solid transparent;
     border-color: #FFFFFF;
     border-radius: 2rem;
-    color: #1E1E2D;
     cursor: pointer;
     font-size: 1.2rem;
     opacity: .8;
     padding: .75rem 2.5rem;
     transition: background-color .2s, opacity .3s;
+}
+
+.sign-container button a {
+    text-decoration: none;
+    color: #1E1E2D;
 }
 
 .sign-container button:hover {

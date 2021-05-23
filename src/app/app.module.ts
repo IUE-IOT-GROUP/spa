@@ -14,6 +14,11 @@ import { FooterComponent } from './partials/footer/footer.component';
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
+import { InfoCardsComponent } from './info-cards/info-cards.component';
+import { FormsModule } from "@angular/forms";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
+import { GetFirstCharacterPipe } from './pipes/get-first-character.pipe';
+import { AuthInterceptorInterceptor } from './interceptors/auth-interceptor.interceptor';
 
 @NgModule({
   declarations: [
@@ -25,14 +30,18 @@ import { far } from '@fortawesome/free-regular-svg-icons';
     PlacesComponent,
     MainComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    InfoCardsComponent,
+    GetFirstCharacterPipe,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorInterceptor, multi: true },],
   bootstrap: [AppComponent]
 })
 export class AppModule {
