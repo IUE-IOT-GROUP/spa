@@ -82,13 +82,14 @@ body {
   display: inline-block;
   list-style: none;
   padding-right: 3rem;
+  cursor: pointer;
 }
 
 .subheader-item-container li:last-child {
   padding-right: 0;
 }
 
-.subheader-item-container li:nth-child(1) a {
+.subheader-item-container li.active a {
   opacity: 1;
 }
 

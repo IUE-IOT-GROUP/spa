@@ -4,7 +4,7 @@
     </div>
     <div class="aside-menu-container">
         <ul>
-            <li><a routerLink="#">
+            <li><a routerLink="/dashboard/users" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                 <fa-icon [icon]="'user-friends'" [fixedWidth]="true"></fa-icon><span>Users</span></a>
             </li>
             <li><a routerLink="/dashboard/logs" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
@@ -26,7 +26,7 @@
                     <li><a routerLink="/dashboard/devices" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                         <fa-icon [icon]="'bug'" [fixedWidth]="true"></fa-icon><span>Devices</span></a>
                     </li>
-                    <li><a routerLink="#">
+                    <li><a routerLink="/dashbaord/users">
                         <fa-icon [icon]="'user-friends'" [fixedWidth]="true"></fa-icon><span>Users</span></a>
                     </li>
                     <li><a routerLink="/dashboard/logs" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">

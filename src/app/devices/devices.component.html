@@ -1,37 +1,18 @@
 <div class="subheader-container">
     <div class="subheader-item-container">
         <ul>
-            <li><a href="#">All</a></li>
-            <li><a href="#">Distance</a></li>
-            <li><a href="#">Heat Index</a></li>
-            <li><a href="#">Humidity</a></li>
-            <li><a href="#">Pressure</a></li>
-            <li><a href="#">Temperature</a></li>
+            <li *ngFor="let tab of tabs" [class]="currentTabId === tab.id ? 'active' : ''"><a (click)="changeTab(tab.id)">{{ tab.name }}</a></li>
         </ul>
     </div>
 </div>
 <div class="devices-container">
-    <ul>
-        <li>
-            <div class="basic-card"></div>
-        </li>
-        <li>
-            <div class="basic-card"></div>
-        </li>
-        <li>
-            <div class="basic-card"></div>
-        </li>
-        <li>
-            <div class="basic-card"></div>
-        </li>
-        <li>
-            <div class="basic-card"></div>
-        </li>
-        <li>
-            <div class="basic-card"></div>
-        </li>
-        <li>
-            <div class="basic-card"></div>
-        </li>
-    </ul>
+    <div *ngFor="let tab of tabs" class="tab-content">
+        <ng-container *ngIf="currentTabId === tab.id">
+            <ul>
+                <li *ngFor="let card of counter(tab.cardCount)">
+                    <div class="basic-card tab1"></div>
+                </li>
+            </ul>
+        </ng-container>
+    </div>
 </div>

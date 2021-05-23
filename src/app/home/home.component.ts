@@ -8,9 +8,30 @@ import { Component, OnInit } from '@angular/core';
 
 export class HomeComponent implements OnInit {
 
-    constructor() { }
+    tabs = [
+        {
+            name: "Dashboard",
+            id: 1,
+            cardCount: 8,
+        },
+    ];
+
+    currentTabId;
+
+    constructor() {
+        this.currentTabId = this.tabs[0].id;
+    }
 
     ngOnInit(): void {
+        console.log(this.tabs);
+    }
+
+    changeTab(id) {
+        this.currentTabId = id;
+    }
+
+    counter(i) {
+        return new Array(i);
     }
 
 }

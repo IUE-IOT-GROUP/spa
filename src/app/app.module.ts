@@ -17,6 +17,7 @@ import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontaweso
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { InfoCardsComponent } from './info-cards/info-cards.component';
+import { UsersComponent } from './users/users.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { InfoCardsComponent } from './info-cards/info-cards.component';
     MainComponent,
     HeaderComponent,
     FooterComponent,
-    InfoCardsComponent
+    InfoCardsComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,
