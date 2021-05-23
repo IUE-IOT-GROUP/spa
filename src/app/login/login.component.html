@@ -1,31 +1,52 @@
 <div class="container">
-    <div class="login-container">
-      <div class="login-title-container">
-        <h1>IoT Management System</h1>
-      </div>
-      <div class="login-information-container">
-        <h2>Sign In To Admin</h2>
-        <span>Enter your details to login to your account</span>
-      </div>
-      <form>
-        <div class="form-email-container">
-          <input class="form-control" type="text" placeholder="E-mail" name="email" autocomplete="off"
-            required>
-        </div>
-        <div class="form-password-container">
-          <input class="form-control" type="password" placeholder="Passsword" name="password"
-            autocomplete="off" required>
-        </div>
-        <div class="form-other-container">
-          <label class="checkbox-container" for="remember">
-            <input type="checkbox" name="remember" id="remember">
-            <span></span>Remember me
-          </label>
-          <a href="#">Forget Password ?</a>
-        </div>
-        <div class="sign-container">
-          <button><a routerLink="/dashboard">Sign In</a></button>
-        </div>
-      </form>
+  <div class="login-container">
+    <div class="login-title-container">
+      <h1>IoT Management System</h1>
     </div>
+    <div class="login-information-container">
+      <h2>Sign In To Admin</h2>
+      <span>Enter your details to login to your account</span>
+    </div>
+    <div *ngIf="error">
+      <ul>
+        <li *ngFor="let e of error.errors">
+          {{ e }}
+        </li>
+      </ul>
+    </div>
+    <form (ngSubmit)="login()">
+      <div class="form-email-container">
+        <input
+          class="form-control"
+          type="text"
+          placeholder="E-mail"
+          autocomplete="off"
+          [(ngModel)]="email"
+          name="email"
+          required
+        />
+      </div>
+      <div class="form-password-container">
+        <input
+          class="form-control"
+          type="password"
+          placeholder="Passsword"
+          name="password"
+          autocomplete="off"
+          required
+          [(ngModel)]="password"
+        />
+      </div>
+      <div class="form-other-container">
+        <label class="checkbox-container" for="remember">
+          <input type="checkbox" name="remember" id="remember" />
+          <span></span>Remember me
+        </label>
+        <a href="#">Forget Password ?</a>
+      </div>
+      <div class="sign-container">
+        <button type="submit">Sign In</button>
+      </div>
+    </form>
   </div>
+</div>

@@ -1,18 +1,28 @@
 <div class="subheader-container">
-    <div class="subheader-item-container">
-        <ul>
-            <li *ngFor="let tab of tabs" [class]="currentTabId === tab.id ? 'active' : ''"><a (click)="changeTab(tab.id)">{{ tab.name }}</a></li>
-        </ul>
-    </div>
+  <div class="subheader-item-container">
+    <ul>
+      <li
+        *ngFor="let place of places"
+        [class]="currentTabId === place.id ? 'active' : ''"
+      >
+        <a (click)="changeTab(place.id)">{{ place.name }}</a>
+      </li>
+    </ul>
+  </div>
 </div>
 <div class="devices-container">
-    <div *ngFor="let tab of tabs" class="tab-content">
-        <ng-container *ngIf="currentTabId === tab.id">
-            <ul>
-                <li *ngFor="let card of counter(tab.cardCount)">
-                    <div class="basic-card tab1"></div>
-                </li>
-            </ul>
-        </ng-container>
-    </div>
+  <div *ngFor="let place of places" class="tab-content">
+    <ng-container *ngIf="currentTabId === place.id">
+      <div class="basic-card">
+        {{ place.name }}
+      </div>
+      <!-- <ul>
+        <li *ngFor="let place of places">
+          <div class="basic-card tab1">
+            {{ place.name }}
+          </div>
+        </li>
+      </ul> -->
+    </ng-container>
+  </div>
 </div>

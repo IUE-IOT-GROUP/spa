@@ -48,7 +48,6 @@ export class DevicesComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        console.log(this.tabs);
     }
 
     changeTab(id) {

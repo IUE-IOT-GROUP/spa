@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { elementAt } from 'rxjs/operators';
+import { Place } from '../models/place';
+import { PlaceService } from '../services/place.service';
 
 @Component({
     selector: 'app-places',
@@ -8,33 +10,36 @@ import { elementAt } from 'rxjs/operators';
 })
 
 export class PlacesComponent implements OnInit {
+    places: Place[] = [];
+    currentTabId: number;
 
-    tabs = [
-        {
-            name: "Residence",
-            id: 1,
-            cardCount: 9
-        },
-        {
-            name: "Company",
-            id: 2,
-            cardCount: 5,
-        },
-        {
-            name: "Summerhouse",
-            id: 3,
-            cardCount: 10
-        },
-    ];
-
-    currentTabId;
-
-    constructor() {
-        this.currentTabId = this.tabs[0].id;
+    constructor(private placeService: PlaceService) {
     }
 
-    ngOnInit(): void {
-        console.log(this.tabs);
+    async ngOnInit(): Promise<void> {
+        this.places = await this.getPlaces();
+        this.changeTab(this.places[0].id);
+    }
+
+    async getPlaces(): Promise<Place[]> {
+        return new Promise((resolve, reject) => {
+            let _places = [];
+            this.placeService.getPlaces().subscribe(
+                (success) => {
+                    success.data.forEach(item => {
+                        let place = new Place();
+                        place.id = item.id;
+                        place.name = item.name;
+
+                        _places.push(place);
+                    });
+                    resolve(_places);
+                },
+                (error) => {
+                    reject(error)
+                }
+            );
+        });
     }
 
     changeTab(id) {

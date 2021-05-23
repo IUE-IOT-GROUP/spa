@@ -7,7 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class HomeComponent implements OnInit {
-
     tabs = [
         {
             name: "Dashboard",
@@ -15,7 +14,6 @@ export class HomeComponent implements OnInit {
             cardCount: 8,
         },
     ];
-
     currentTabId;
 
     constructor() {
@@ -23,7 +21,6 @@ export class HomeComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        console.log(this.tabs);
     }
 
     changeTab(id) {
