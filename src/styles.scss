@@ -34,13 +34,13 @@ body.dark {
   --forth-background-color: #1a1a27;
   --border-bottom: #1a1a27;
   --border-right: #1a1a27;
-  --first-text-color: #ffffff;
-  --second-text-color: #ffffff;
+  --first-text-color: RGBA(255, 255, 255, 0.7);
+  --second-text-color: RGBA(255, 255, 255, 0.7);
   --hover-first-background-color: #1e1e2d;
   --hover-second-background-color: #ffffff;
   --hover-first-text-color: #1e1e2d;
   --hover-second-text-color: #ffffff;
-  --user-first-letter-background-color: #ffffff;
+  --user-first-letter-background-color: RGBA(255, 255, 255, 0.7);
   --user-first-letter-text-color: #1e1e2d;
 }
 

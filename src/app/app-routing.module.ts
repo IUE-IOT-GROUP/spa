@@ -7,7 +7,6 @@ import { LogsComponent } from './logs/logs.component';
 import { MainComponent } from './main/main.component';
 import { PlacesComponent } from './places/places.component';
 import { SettingsComponent } from './settings/settings.component';
-import { UsersComponent } from './users/users.component';
 
 const routes: Routes = [
   {
@@ -34,10 +33,6 @@ const routes: Routes = [
         path: 'settings',
         component: SettingsComponent
       },
-      {
-        path: 'users',
-        component: UsersComponent,
-      }
     ]
   },
   {
