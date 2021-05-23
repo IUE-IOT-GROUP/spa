@@ -138,6 +138,20 @@ body {
   display: flex;
   flex-direction: column;
   height: 100px;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+.title-card {
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-right);
+  color: var(--second-text-color);
+}
+
+.card-element {
+  margin-top: 15px;
+  margin-bottom: 5px;
+  color: var(--second-text-color);
 }
 
 @media (max-width: 1200px) {

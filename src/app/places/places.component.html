@@ -13,9 +13,13 @@
 <div class="devices-container">
   <div *ngFor="let place of places" class="tab-content">
     <ng-container *ngIf="currentTabId === place.id">
-      <div class="basic-card">
-        {{ place.name }}
+      <ul>
+        <li>
+          <div class="basic-card">
+        <span class="title-card">{{ place.name }}</span>
       </div>
+        </li>
+      </ul>
       <!-- <ul>
         <li *ngFor="let place of places">
           <div class="basic-card tab1">
