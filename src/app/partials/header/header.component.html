@@ -128,10 +128,11 @@
         <span class="slider round"></span>
       </label>
     </div>
-    <a (click)="logout()"
-      ><span id="user-message">Hi, </span
-      ><span id="user-name">{{ username }}</span
-      ><span id="user-first-letter">{{ username | getFirstCharacter }}</span></a
-    >
+    <a id="logout" (click)="logout()">Log Out</a>
+    <a>
+      <span id="user-message">Hi, </span>
+      <span id="user-name">{{ username }}</span>
+      <span id="user-first-letter">{{ username | getFirstCharacter }}</span>
+    </a>
   </div>
 </div>
