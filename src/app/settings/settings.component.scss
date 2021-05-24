@@ -1,3 +1,19 @@
 .basic-card {
     height: auto;
+    margin-bottom: 30px;
+}
+
+.settings-container li {
+    list-style: none;
+}
+
+.subheader-item-container a {
+    color: var(--first-text-color);
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    .basic-card {
+        margin-bottom: 25px;
+    }
 }
