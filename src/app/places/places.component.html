@@ -1,10 +1,7 @@
 <div class="subheader-container">
   <div class="subheader-item-container">
     <ul>
-      <li
-        *ngFor="let place of places"
-        [class]="currentTabId === place.id ? 'active' : ''"
-      >
+      <li *ngFor="let place of places" [class]="currentTabId === place.id ? 'active' : ''">
         <a (click)="changeTab(place.id)">{{ place.name }}</a>
       </li>
     </ul>
@@ -16,8 +13,18 @@
       <ul>
         <li>
           <div class="basic-card">
-        <span class="title-card">{{ place.name }}</span>
-      </div>
+            <span class="title-card">Conference Room</span>
+            <ul>
+              <li>
+                <a href="#"><span class="device-element"><fa-icon [icon]="'bug'" [fixedWidth]="true"></fa-icon
+                  >Device 1</span></a>
+              </li>
+              <li>
+                <a href="#"><span class="device-element"><fa-icon [icon]="'bug'" [fixedWidth]="true"></fa-icon
+                  >Device 2</span></a>
+              </li>
+            </ul>
+          </div>
         </li>
       </ul>
       <!-- <ul>
