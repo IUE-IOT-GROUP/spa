@@ -1,11 +1,11 @@
-<div class="container">
-  <div class="login-container">
-    <div class="login-title-container">
-      <h1>IoT Management System</h1>
+<div class="flex items-center justify-center w-full min-h-screen text-center bg-opacity-99 text-secondary bg-primary">
+  <div class="p-8 w-login">
+    <div class="mb-8">
+      <h1 class="text-3xl font-semibold leading-relaxed opacity-90">IoT Management System</h1>
     </div>
-    <div class="login-information-container">
-      <h2>Sign In To Admin</h2>
-      <span>Enter your details to login to your account</span>
+    <div class="mb-12">
+      <h2 class="mb-2 text-2xl opacity-75">Sign In To Admin</h2>
+      <span class="text-xl opacity-60">Enter your details to login to your account</span>
     </div>
     <div *ngIf="error">
       <ul>
@@ -15,38 +15,20 @@
       </ul>
     </div>
     <form (ngSubmit)="login()">
-      <div class="form-email-container">
-        <input
-          class="form-control"
-          type="text"
-          placeholder="E-mail"
-          autocomplete="off"
-          [(ngModel)]="email"
-          name="email"
-          required
-        />
+      <div class="mb-8">
+        <input class="w-full px-8 py-4 mb-2 leading-8 transition-opacity duration-300 border-none opacity-90 focus:outline-none focus:ring-0 text-secondary bg-opacity-1 bg-secondary rounded-2xl focus:shadow-sm focus:opacity-100" type="text" placeholder="E-mail" name="email" autocomplete="off" required [(ngModel)]="email">
       </div>
-      <div class="form-password-container">
-        <input
-          class="form-control"
-          type="password"
-          placeholder="Passsword"
-          name="password"
-          autocomplete="off"
-          required
-          [(ngModel)]="password"
-        />
+      <div class="mb-8">
+        <input class="w-full px-8 py-4 mb-2 leading-8 transition-opacity duration-300 border-none opacity-90 focus:outline-none focus:ring-0 text-secondary bg-opacity-1 bg-secondary rounded-2xl focus:shadow-sm focus:opacity-100" type="password" placeholder="Password" name="password" autocomplete="off" required [(ngModel)]="password">
       </div>
-      <div class="form-other-container">
-        <label class="checkbox-container" for="remember">
-          <input type="checkbox" name="remember" id="remember" />
-          <span></span>Remember me
+      <div class="flex justify-between mb-8 no-underline text-secondary">
+        <label class="relative pl-8 transition-opacity duration-300 cursor-pointer opacity-70 hover:opacity-100" for="remember">
+          <input class="w-6 h-6 mr-2 bg-transparent border border-gray-400 rounded-lg appearance-none checked:bg-transparent checked:border checked:border-gray-400 focus:text-transparent focus:outline-none focus:ring-primary hover:text-primary hover:checked:border hover:checked:border-gray-400 " type="checkbox" name="remember" id="remember">
+          <span class="w-6 h-8 text-center">Remember me</span>
         </label>
-        <a href="#">Forget Password ?</a>
+        <a class="pr-8 transition-opacity duration-300 opacity-70 hover:opacity-100" href="#">Forget Password ?</a>
       </div>
-      <div class="sign-container">
-        <button type="submit">Sign In</button>
-      </div>
+      <button class="px-10 py-2 text-lg transition-opacity duration-300 cursor-pointer bg-secondary text-primary rounded-3xl opacity-80 hover:opacity-100">Sign In</button>
     </form>
   </div>
 </div>

@@ -11,30 +11,33 @@ module.exports = {
   darkMode: "media", // or 'media' or 'class'
   theme: {
     extend: {
-      width: {
-        450: "450px",
+      spacing: {
+        'login': '450px',
       },
       opacity: {
-        2: "0.02",
+        '1': '0.01',
+        '2': '0.02',
+        '3': '0.03',
+        '4': '0.04',
       },
       colors: {
         primary: ({ opacityVariable, opacityValue }) => {
           if (opacityValue !== undefined) {
-            return `rgba(var(--color-primary), ${opacityValue})`;
+            return `rgba(var(--color-primary), ${opacityValue})`
           }
           if (opacityVariable !== undefined) {
-            return `rgba(var(--color-primary), var(${opacityVariable}, 1))`;
+            return `rgba(var(--color-primary), var(${opacityVariable}, 1))`
           }
-          return `rgb(var(--color-primary))`;
+          return `rgb(var(--color-primary))`
         },
-        "form-control": ({ opacityVariable, opacityValue }) => {
+        secondary: ({ opacityVariable, opacityValue }) => {
           if (opacityValue !== undefined) {
-            return `rgba(var(--color-form-control), ${opacityValue})`;
+            return `rgba(var(--color-secondary), ${opacityValue})`
           }
           if (opacityVariable !== undefined) {
-            return `rgba(var(--color-form-control), var(${opacityVariable}, 1))`;
+            return `rgba(var(--color-secondary), var(${opacityVariable}, 1))`
           }
-          return `rgb(var(--color-form-control))`;
+          return `rgb(var(--color-secondary))`
         },
       },
       fontFamily: {
