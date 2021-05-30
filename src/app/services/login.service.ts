@@ -15,6 +15,14 @@ export class LoginService {
   private _token: string;
   private _user: User = null;
   private _username: string = null;
+  private _email: string = null;
+  
+  public get email(): string {
+    return localStorage.getItem('email');
+  }
+  public set email(value: string) {
+    localStorage.setItem('email', value);
+  }
 
   public get username(): string {
     return localStorage.getItem('username');
@@ -57,5 +65,6 @@ export class LoginService {
   logout() {
     localStorage.removeItem("token");
     localStorage.removeItem("username");
+    localStorage.removeItem("email");
   }
 }

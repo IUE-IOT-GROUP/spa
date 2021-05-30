@@ -1,138 +1,89 @@
-<div id="nav-links" class="aside-container" [ngClass]="{ show: showSidebar }">
-  <div class="aside-title-container">
-    <a routerLink="/dashboard">IoT Management System</a>
-  </div>
-  <div class="aside-menu-container">
-    <ul>
-      <li>
-        <a
-          routerLink="/dashboard/logs"
-          routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true }"
-        >
-          <fa-icon [icon]="'book-open'" [fixedWidth]="true"></fa-icon
-          ><span>Logs</span></a
-        >
-      </li>
-      <li>
-        <a
-          routerLink="/dashboard/settings"
-          routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true }"
-        >
-          <fa-icon [icon]="'cog'" [fixedWidth]="true"></fa-icon
-          ><span>Settings</span></a
-        >
-      </li>
-    </ul>
-    <div class="aside-mobile-container">
-      <div class="mobile-item-container">
+<div
+    class="fixed top-0 left-0 right-0 z-20 flex justify-between h-24 bg-white border-b border-gray-200 dark:border-opacity-20 dark:border-black dark:bg-gray-900 sm:left-20 lg:left-80">
+    <div class="flex items-center">
         <ul>
-          <li>
-            <a
-              routerLink="/dashboard"
-              routerLinkActive="active"
-              [routerLinkActiveOptions]="{ exact: true }"
-            >
-              <fa-icon [icon]="'home'" [fixedWidth]="true"></fa-icon
-              ><span>Home</span></a
-            >
-          </li>
-          <li>
-            <a
-              routerLink="/dashboard/places"
-              routerLinkActive="active"
-              [routerLinkActiveOptions]="{ exact: true }"
-            >
-              <fa-icon [icon]="'map-marker'" [fixedWidth]="true"></fa-icon
-              ><span>Places</span></a
-            >
-          </li>
-          <li>
-            <a
-              routerLink="/dashboard/devices"
-              routerLinkActive="active"
-              [routerLinkActiveOptions]="{ exact: true }"
-            >
-              <fa-icon [icon]="'bug'" [fixedWidth]="true"></fa-icon
-              ><span>Devices</span></a
-            >
-          </li>
-          <li>
-            <a
-              routerLink="/dashboard/logs"
-              routerLinkActive="active"
-              [routerLinkActiveOptions]="{ exact: true }"
-            >
-              <fa-icon [icon]="'book-open'" [fixedWidth]="true"></fa-icon
-              ><span>Logs</span></a
-            >
-          </li>
-          <li>
-            <a
-              routerLink="/dashboard/settings"
-              routerLinkActive="active"
-              [routerLinkActiveOptions]="{ exact: true }"
-            >
-              <fa-icon [icon]="'cog'" [fixedWidth]="true"></fa-icon
-              ><span>Settings</span></a
-            >
-          </li>
+            <li class="inline ml-6 sm:hidden">
+                <a (click)="toggleSidebar()"
+                    class="p-4 text-lg text-gray-900 cursor-pointer dark:text-white rounded-2xl hover:bg-gray-900 dark:hover:bg-white hover:text-white dark:hover:text-gray-900">
+                    <fa-icon [icon]="'bars'"></fa-icon>
+                </a>
+            </li>
+            <li class="hidden ml-6 sm:inline">
+                <a class="p-4 text-lg text-gray-900 dark:text-white rounded-2xl hover:bg-gray-900 dark:hover:bg-white hover:text-white dark:hover:text-gray-900"
+                    routerLink="/dashboard" [routerLinkActive]="['!bg-gray-900', '!text-white', 'dark:!bg-white', 'dark:!text-gray-900']"
+                    [routerLinkActiveOptions]="{ exact: true }">Home</a>
+            </li>
+            <li class="hidden ml-6 sm:inline">
+                <a class="p-4 text-lg text-gray-900 dark:text-white rounded-2xl hover:bg-gray-900 dark:hover:bg-white hover:text-white dark:hover:text-gray-900"
+                    routerLink="/dashboard/places" [routerLinkActive]="['!bg-gray-900', '!text-white', 'dark:!bg-white', 'dark:!text-gray-900']"
+                    [routerLinkActiveOptions]="{ exact: true }">Places</a>
+            </li>
+            <li class="hidden ml-6 sm:inline">
+                <a class="p-4 text-lg text-gray-900 dark:text-white rounded-2xl hover:bg-gray-900 dark:hover:bg-white hover:text-white dark:hover:text-gray-900"
+                    routerLink="/dashboard/devices" [routerLinkActive]="['!bg-gray-900', '!text-white', 'dark:!bg-white', 'dark:!text-gray-900']"
+                    [routerLinkActiveOptions]="{ exact: true }">Devices</a>
+            </li>
         </ul>
-      </div>
     </div>
-  </div>
-</div>
-<div class="header-container">
-  <div class="header-item-container">
-    <ul>
-      <li>
-        <a (click)="toggleSidebar()" id="nav-item"
-          ><fa-icon [icon]="'bars'"></fa-icon
-        ></a>
-      </li>
-      <li>
+    <div class="flex items-center mr-6">
         <a
-          routerLink="/dashboard"
-          [routerLinkActive]="'active'"
-          [routerLinkActiveOptions]="{ exact: true }"
-          >Home</a
-        >
-      </li>
-      <li>
-        <a
-          routerLink="/dashboard/places"
-          [routerLinkActive]="'active'"
-          [routerLinkActiveOptions]="{ exact: true }"
-          >Places</a
-        >
-      </li>
-      <li>
-        <a
-          routerLink="/dashboard/devices"
-          [routerLinkActive]="'active'"
-          [routerLinkActiveOptions]="{ exact: true }"
-          >Devices</a
-        >
-      </li>
-    </ul>
-  </div>
-  <div class="header-user-container">
-    <div class="night-mode-container">
-      <label class="switch">
-        <input
-          type="checkbox"
-          [checked]="enableDark"
-          (change)="switchTheme()"
-        />
-        <span class="slider round"></span>
-      </label>
+            class="p-4 text-lg cursor-pointer dark:text-white dark:hover:text-gray-900 hover:bg-gray-900 dark:hover:bg-white hover:text-white rounded-2xl group"
+            (click)="toggleUserBar()"
+            >
+            <span class="mr-1 opacity-50">Hi,</span>
+            <span class="mr-2 capitalize">{{ username }}</span>
+            <span
+                class="px-3 py-1 text-white uppercase bg-gray-900 dark:text-gray-900 dark:bg-white rounded-xl group-hover:bg-white dark:group-hover:bg-gray-900 group-hover:text-gray-900 dark:group-hover:text-white">{{ username | getFirstCharacter }}
+            </span>
+        </a>
     </div>
-    <a id="logout" (click)="logout()">Log Out</a>
-    <a id="user-information">
-      <span id="user-message">Hi, </span>
-      <span id="user-name">{{ username }}</span>
-      <span id="user-first-letter">{{ username | getFirstCharacter }}</span>
-    </a>
-  </div>
+    <div
+        class="fixed flex-col justify-between bg-white border border-gray-200 shadow-md dark:text-white dark:bg-gray-900 dark:border-opacity-20 dark:border-black h-96 w-80 top-28 right-6"
+        [class.flex]="showUserbar"
+        [class.hidden]="!showUserbar"
+        >
+        <div class="flex h-24 p-4 border-b border-gray-200 dark:border-opacity-20 dark:border-black">
+            <div
+                class="p-3.5 px-5 mr-2 text-3xl text-white dark:text-gray-900 uppercase bg-gray-900 dark:bg-white rounded-xl group-hover:bg-white dark:group-hover:bg-gray-900 group-hover:text-gray-900 dark:group-hover:text-white">
+                {{ username | getFirstCharacter }}
+            </div>
+            <span>
+                <span class="flex mt-1.5 mb-1 capitalize">{{ username }}</span>
+                <span class="flex text-sm opacity-60">{{ email }}</span>
+            </span>
+        </div>
+        <div class="flex flex-col">
+            <ul>
+                <li class="w-full">
+                    <a class="block p-4 text-gray-900 dark:text-white hover:opacity-100 opacity-80" routerLink="/dashboard"
+                        routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                        <span class="text-lg lg:inline">Language</span>
+                    </a>
+                </li>
+                <li class="w-full">
+                    <a class="block p-4 text-gray-900 dark:text-white hover:opacity-100 opacity-80" routerLink="/dashboard"
+                        routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                        <span class="text-lg lg:inline">Account Settings</span>
+                    </a>
+                </li>
+            </ul>
+            <div class="flex justify-between w-full p-4 border-t border-gray-200 dark:border-opacity-20 dark:border-black">
+                <a class="cursor-pointer opacity-70 hover:opacity-100" id="logout" (click)="logout()">
+                    Log Out
+                    <fa-icon class="ml-0.5" [icon]="'angle-double-right'" [fixedWidth]="true"></fa-icon>
+                </a>
+                <div class="relative inline-block w-10 mr-2 align-middle transition duration-200 ease-in select-none">
+                    <input type="checkbox" name="toggle" id="toggle"
+                        class="absolute block w-6 h-6 bg-white rounded-full 
+                        text-gray-900
+                        cursor-pointer border-0.5 border-gray-300 toggle-checkbox checked:right-0 checked:border-gray-900 checked:bg-gray-900 hover:text-gray-900
+                        focus:ring-0 focus:ring-offset-0"
+                        [checked]="enableDark"
+                        (change)="switchTheme()" />
+                    <label for="toggle"
+                        class="block h-6 overflow-hidden bg-gray-200 rounded-full cursor-pointer toggle-label"></label>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

@@ -1,39 +1,63 @@
-<div class="subheader-container">
-  <div class="subheader-item-container">
-    <ul>
-      <li *ngFor="let place of places" [class]="currentTabId === place.id ? 'active' : ''">
-        <a (click)="changeTab(place.id)">{{ place.name }}</a>
-      </li>
-    </ul>
-  </div>
-</div>
-<div class="devices-container">
-  <div *ngFor="let place of places" class="tab-content">
+<app-subheader>
+  <ul>
+    <li class="inline mr-8 opacity-50 hover:opacity-100 last:mx-0 dark:text-white" *ngFor="let place of places"
+      [class]="currentTabId === place.id ? 'opacity-100' : ''">
+      <a class="cursor-pointer" (click)="changeTab(place.id)">{{ place.name }}</a>
+  </ul>
+</app-subheader>
+
+<app-content>
+  <div *ngFor="let place of places">
     <ng-container *ngIf="currentTabId === place.id">
-      <ul>
-        <li>
-          <div class="basic-card">
-            <span class="title-card">Conference Room</span>
-            <ul>
-              <li>
-                <a href="#"><span class="device-element"><fa-icon [icon]="'bug'" [fixedWidth]="true"></fa-icon
-                  >Device 1</span></a>
-              </li>
-              <li>
-                <a href="#"><span class="device-element"><fa-icon [icon]="'bug'" [fixedWidth]="true"></fa-icon
-                  >Device 2</span></a>
-              </li>
-            </ul>
-          </div>
-        </li>
-      </ul>
-      <!-- <ul>
-        <li *ngFor="let place of places">
-          <div class="basic-card tab1">
-            {{ place.name }}
-          </div>
-        </li>
-      </ul> -->
+      <div 
+      class="grid w-full grid-flow-row grid-cols-1 gap-8 xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1">
+        <app-card *ngFor="let subPlace of place.places">
+          <slot-title>
+            <a class="opacity-100">
+              {{ subPlace.name }}
+            </a>
+          </slot-title>
+          <slot-content>
+            <a class="cursor-pointer">
+              <ul class="text-center">
+                <li class="inline-block py-2 mr-4">
+                  <a class="cursor-pointer opacity-70 hover:opacity-100">
+                    <fa-icon class="mr-1" [icon]="'bug'" [fixedWidth]="true"></fa-icon>Device 1
+                  </a>
+                </li>
+                <li class="inline-block py-2 mr-4">
+                  <a class="cursor-pointer opacity-70 hover:opacity-100">
+                    <fa-icon class="mr-1" [icon]="'bug'" [fixedWidth]="true"></fa-icon>Device 2
+                  </a>
+                </li>
+                <li class="inline-block py-2 mr-4">
+                  <a class="cursor-pointer opacity-70 hover:opacity-100">
+                    <fa-icon class="mr-1" [icon]="'bug'" [fixedWidth]="true"></fa-icon>Device 3
+                  </a>
+                </li>
+                <li class="inline-block py-2 mr-4">
+                  <a class="cursor-pointer opacity-70 hover:opacity-100">
+                    <fa-icon class="mr-1" [icon]="'bug'" [fixedWidth]="true"></fa-icon>Device 4
+                  </a>
+                </li>
+                <li class="inline-block py-2 mr-4">
+                  <a class="cursor-pointer opacity-70 hover:opacity-100">
+                    <fa-icon class="mr-1" [icon]="'bug'" [fixedWidth]="true"></fa-icon>Device 5
+                  </a>
+                </li>
+              </ul>
+            </a>
+          </slot-content>
+          <slot-buttons>
+            <a class="cursor-pointer">
+              <fa-icon class="ml-2 opacity-70 hover:opacity-100" [icon]="'trash'" [fixedWidth]="true"></fa-icon>
+            </a>
+            <a class="cursor-pointer">
+              <fa-icon class="ml-2 opacity-70 hover:opacity-100" [icon]="'plus'" [fixedWidth]="true"></fa-icon>
+            </a>
+          </slot-buttons>
+        </app-card>
+      </div>
     </ng-container>
   </div>
-</div>
+</app-content>

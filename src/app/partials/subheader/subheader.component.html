@@ -1,0 +1,14 @@
+<div
+  class="fixed left-0 right-0 z-10 flex justify-between h-24 text-lg bg-white border-b border-gray-200 dark:bg-gray-900 dark:border-opacity-20 dark:border-black top-24 sm:left-20 lg:left-80">
+  <div class="flex items-center mx-8 overflow-scroll whitespace-nowrap">
+    <ng-content></ng-content>
+    <div class="fixed right-0 flex justify-center p-2 bg-white dark:bg-gray-900 dark:text-white">
+      <a class="mr-4 cursor-pointer opacity-70 hover:opacity-100">
+        <fa-icon [icon]="'trash'" [fixedWidth]="true"></fa-icon>
+      </a>
+      <a class="mr-4 cursor-pointer opacity-70 hover:opacity-100">
+        <fa-icon [icon]="'plus'" [fixedWidth]="true"></fa-icon>
+      </a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,44 @@
+<div class="z-30 flex flex-col justify-between w-64 h-screen bg-gray-900 border-r border-gray-200 dark:border-opacity-20 dark:border-black sm:flex sm:w-20 lg:w-80"
+    [class]="sidebarToggled ? 'show w-80 flex' : 'hidden'" id="nav-links">
+    <div class="flex h-24 p-8">
+        <a class="self-center text-lg font-bold text-white uppercase lg:inline text-bg opacity-90 hover:opacity-100"
+            [class]="sidebarToggled ? 'show sm:hidden' : 'hidden'" id="nav-links" routerLink="/dashboard">IoT Management
+            System</a>
+    </div>
+    <div class="flex text-lg">
+        <ul class="w-full">
+            <li class="w-full sm:hidden">
+                <a class="block px-8 py-6 text-white hover:opacity-100 opacity-80" routerLink="/dashboard"
+                    routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                    <fa-icon class="mr-2 text-xl" [icon]="'home'" [fixedWidth]="true"></fa-icon>
+                    <span class="text-lg lg:inline" [class]="sidebarToggled ? 'show sm:hidden' : 'hidden'"
+                        id="nav-links">Home</span>
+                </a>
+            </li>
+            <li class="w-full sm:hidden">
+                <a class="block px-8 py-6 text-white hover:opacity-100 opacity-80" routerLink="/dashboard/places"
+                    routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                    <fa-icon class="mr-2 text-xl" [icon]="'map-marker'" [fixedWidth]="true"></fa-icon>
+                    <span class="text-lg lg:inline" [class]="sidebarToggled ? 'show sm:hidden' : 'hidden'"
+                        id="nav-links">Places</span>
+                </a>
+            </li>
+            <li class="w-full sm:hidden">
+                <a class="block px-8 py-6 text-white hover:opacity-100 opacity-80" routerLink="/dashboard/devices"
+                    routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                    <fa-icon class="mr-2 text-xl" [icon]="'bug'" [fixedWidth]="true"></fa-icon>
+                    <span class="text-lg lg:inline" [class]="sidebarToggled ? 'show sm:hidden' : 'hidden'"
+                        id="nav-links">Devices</span>
+                </a>
+            </li>
+            <li class="w-full">
+                <a class="block px-8 py-6 text-white hover:opacity-100 opacity-80" routerLink="/dashboard/logs"
+                    routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                    <fa-icon class="mr-2 text-xl" [icon]="'book-open'" [fixedWidth]="true"></fa-icon>
+                    <span class="text-lg lg:inline" [class]="sidebarToggled ? 'show sm:hidden' : 'hidden'"
+                        id="nav-links">Logs</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

@@ -6,7 +6,6 @@ import { PlaceService } from '../services/place.service';
 @Component({
     selector: 'app-places',
     templateUrl: './places.component.html',
-    styleUrls: ['./places.component.scss']
 })
 
 export class PlacesComponent implements OnInit {
@@ -27,9 +26,23 @@ export class PlacesComponent implements OnInit {
             this.placeService.getPlaces().subscribe(
                 (success) => {
                     success.data.forEach(item => {
+                        let placeList: Place[] = [];
+                        if (item.places.length > 0)
+                        {
+                            item.places.forEach(subItem => {
+                                let place = new Place();
+                                place.id = subItem.id;
+                                place.name = subItem.name;
+
+                                placeList.push(place);
+                            });
+                        }
+
+                        console.log(item);
                         let place = new Place();
                         place.id = item.id;
                         place.name = item.name;
+                        place.places = placeList;
 
                         _places.push(place);
                     });

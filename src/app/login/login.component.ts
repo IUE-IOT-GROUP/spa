@@ -30,6 +30,7 @@ export class LoginComponent implements OnInit {
         let user = new User();
         this.loginService.token = success.token;
         this.loginService.username = success.username;
+        this.loginService.email = success.email;
 
         this.router.navigate(['/dashboard']);
       },
