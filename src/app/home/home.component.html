@@ -1,8 +1,1 @@
-<app-subheader>
-    <ul>
-        <li class="inline mr-10 opacity-50 hover:opacity-100 active:opacity-100 last:mx-0 dark:text-white" *ngFor="let tab of tabs"
-        [class]="currentTabId === tab.id ? 'opacity-100' : ''">
-            <a class="cursor-pointer" (click)="changeTab(tab.id)">{{ tab.name }}</a>
-        </li>
-    </ul>
-</app-subheader>
+<app-content></app-content>

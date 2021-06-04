@@ -1,11 +1,15 @@
-<div class="flex flex-col justify-between h-56 text-gray-900 bg-white shadow-sm dark:bg-opacity-80 dark:hover:bg-opacity-100 rounded-xl">
-    <div class="p-4 text-lg">
-        <ng-content select="slot-title"></ng-content>
-    </div>
-    <div class="p-4">
-        <ng-content select="slot-content"></ng-content>
-    </div>
-    <div class="flex justify-end p-4">
-        <ng-content select="slot-buttons"></ng-content>
+<div class="inline-block w-full p-4 bg-third md:w-1/2 xl:w-1/3 dark:bg-forth">
+    <div
+        class="transition-colors duration-200 bg-first text-second rounded-xl dark:bg-second dark:text-first">
+        <div class="flex justify-between p-4 text-lg">
+            <ng-content select="slot-title"></ng-content>
+            <fa-icon [icon]="'grip-horizontal'" [fixedWidth]="true"></fa-icon>
+        </div>
+        <div class="p-4">
+            <ng-content select="slot-content"></ng-content>
+        </div>
+        <div class="flex justify-end p-4">
+            <ng-content select="slot-buttons"></ng-content>
+        </div>
     </div>
 </div>
