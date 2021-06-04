@@ -1,70 +1,102 @@
-<app-subheader>
-    <ul class="px-4 py-2 ml-4">
-        <li class="inline-block p-4 mr-4 opacity-50" *ngFor="let place of places"
-            [class]="currentTabId === place.id ? 'opacity-100' : ''">
-            <a class="cursor-pointer" (click)="changeTab(place.id)">
-                {{ place.name }}
-            </a>
-        </li>
-    </ul>  
-</app-subheader>
-
 <app-content>
-    <div *ngFor="let place of places">
-        <ng-container *ngIf="currentTabId === place.id">
-            <div class="">
-                <app-card *ngFor="let subPlace of place.places">
-                    <slot-title>
-                        <a>
-                            {{ subPlace.name }}
-                        </a>
-                    </slot-title>
-                    <slot-content>
-                        <ul class="text-center">
-                            <li class="inline-block py-2 mr-4">
-                                <a class="opacity-70 hover:opacity-100">
-                                    <fa-icon class="mr-1" [icon]="'bug'" [fixedWidth]="true"></fa-icon>
-                                    <span>Device 1</span>
-                                </a>
-                            </li>
-                            <li class="inline-block py-2 mr-4">
-                                <a class="opacity-70 hover:opacity-100">
-                                    <fa-icon class="mr-1" [icon]="'bug'" [fixedWidth]="true"></fa-icon>
-                                    <span>Device 2</span>
-                                </a>
-                            </li>
-                            <li class="inline-block py-2 mr-4">
-                                <a class="opacity-70 hover:opacity-100">
-                                    <fa-icon class="mr-1" [icon]="'bug'" [fixedWidth]="true"></fa-icon>
-                                    <span>Device 3</span>
-                                </a>
-                            </li>
-                            <li class="inline-block py-2 mr-4">
-                                <a class="opacity-70 hover:opacity-100">
-                                    <fa-icon class="mr-1" [icon]="'bug'" [fixedWidth]="true"></fa-icon>
-                                    <span>Device 4</span>
-                                </a>
-                            </li>
-                            <li class="inline-block py-2 mr-4">
-                                <a class="opacity-70 hover:opacity-100">
-                                    <fa-icon class="mr-1" [icon]="'bug'" [fixedWidth]="true"></fa-icon>
-                                    <span>Device 5</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </slot-content>
-                    <slot-buttons>
-                        <a>
-                            <fa-icon class="ml-2 opacity-70 hover:opacity-100" [icon]="'trash'" [fixedWidth]="true">
-                            </fa-icon>
-                        </a>
-                        <a>
-                            <fa-icon class="ml-2 opacity-70 hover:opacity-100" [icon]="'plus'" [fixedWidth]="true">
-                            </fa-icon>
-                        </a>
-                    </slot-buttons>
-                </app-card>
-            </div>
-        </ng-container>
-    </div>
+    <app-card *ngFor="let subPlace of places">
+        <slot-title>
+            <a [routerLink]="['/dashboard/places', subPlace.id]">
+                {{ subPlace.name }}
+            </a>
+        </slot-title>
+        <slot-content>
+            <ul class="text-center">
+                <li class="inline-block py-2 mr-4">
+                    <a class="opacity-70 hover:opacity-100">
+                        <fa-icon class="mr-1"
+                                 [icon]="'bug'"
+                                 [fixedWidth]="true"></fa-icon>
+                        <span>Device 1</span>
+                    </a>
+                </li>
+                <li class="inline-block py-2 mr-4">
+                    <a class="opacity-70 hover:opacity-100">
+                        <fa-icon class="mr-1"
+                                 [icon]="'bug'"
+                                 [fixedWidth]="true"></fa-icon>
+                        <span>Device 2</span>
+                    </a>
+                </li>
+                <li class="inline-block py-2 mr-4">
+                    <a class="opacity-70 hover:opacity-100">
+                        <fa-icon class="mr-1"
+                                 [icon]="'bug'"
+                                 [fixedWidth]="true"></fa-icon>
+                        <span>Device 3</span>
+                    </a>
+                </li>
+                <li class="inline-block py-2 mr-4">
+                    <a class="opacity-70 hover:opacity-100">
+                        <fa-icon class="mr-1"
+                                 [icon]="'bug'"
+                                 [fixedWidth]="true"></fa-icon>
+                        <span>Device 4</span>
+                    </a>
+                </li>
+                <li class="inline-block py-2 mr-4">
+                    <a class="opacity-70 hover:opacity-100">
+                        <fa-icon class="mr-1"
+                                 [icon]="'bug'"
+                                 [fixedWidth]="true"></fa-icon>
+                        <span>Device 5</span>
+                    </a>
+                </li>
+            </ul>
+        </slot-content>
+        <slot-buttons>
+            <a>
+                <fa-icon class="ml-2 opacity-70 hover:opacity-100"
+                         [icon]="'trash'"
+                         [fixedWidth]="true">
+                </fa-icon>
+            </a>
+            <a>
+                <fa-icon class="ml-2 opacity-70 hover:opacity-100"
+                         [icon]="'plus'"
+                         [fixedWidth]="true">
+                </fa-icon>
+            </a>
+        </slot-buttons>
+    </app-card>
 </app-content>
+
+<app-modal id="addPlaceModal">
+    <slot-title>
+        Add Place
+    </slot-title>
+    <form [formGroup]="addPlaceForm"
+          (ngSubmit)="onSubmit()">
+        <div class="space-y-5">
+            <app-form-group for="name"
+                            label="Name">
+                <input type="text"
+                       formControlName="name"
+                       class="input">
+            </app-form-group>
+            <app-form-group for="parent"
+                            label="Parent">
+                <select formControlName="parent"
+                        id="parent"
+                        class="input w-full">
+                    <option value="null"
+                            selected>None</option>
+                    <option *ngFor="let place of places"
+                            value="{{  place.id }}">{{ place.name }}</option>
+                </select>
+            </app-form-group>
+        </div>
+    </form>
+
+    <slot-buttons>
+        <button (click)="onSubmit()"
+                class="btn button-primary">
+            Save
+        </button>
+    </slot-buttons>
+</app-modal>

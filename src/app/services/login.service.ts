@@ -16,7 +16,7 @@ export class LoginService {
   private _user: User = null;
   private _username: string = null;
   private _email: string = null;
-  
+
   public get email(): string {
     return localStorage.getItem('email');
   }
@@ -51,9 +51,7 @@ export class LoginService {
     })
   };
 
-  constructor(
-    private http: HttpClient,
-  ) { }
+  constructor(private http: HttpClient) { }
 
   login(loginModel: Login): Observable<User> {
     return this.http.post<User>(this.loginUrl, loginModel, this.httpOptions)

@@ -29,6 +29,10 @@ const routes: Routes = [
         component: PlacesComponent
       },
       {
+        path: 'places/:id',
+        component: PlacesComponent
+      },
+      {
         path: 'logs',
         component: LogsComponent
       },
