@@ -1,4 +1,11 @@
 <app-content>
+    <app-card>
+        <slot-content>
+            <fa-icon class="text-6xl opacity-70 hover:opacity-100"
+                                 [icon]="'plus'"
+                                 [fixedWidth]="true"></fa-icon>
+        </slot-content>
+    </app-card>
     <app-card *ngFor="let subPlace of places">
         <slot-title>
             <a [routerLink]="['/dashboard/places', subPlace.id]">
@@ -6,7 +13,7 @@
             </a>
         </slot-title>
         <slot-content>
-            <ul class="text-center">
+            <ul>
                 <li class="inline-block py-2 mr-4">
                     <a class="opacity-70 hover:opacity-100">
                         <fa-icon class="mr-1"
@@ -83,7 +90,7 @@
                             label="Parent">
                 <select formControlName="parent"
                         id="parent"
-                        class="input w-full">
+                        class="w-full input">
                     <option value="null"
                             selected>None</option>
                     <option *ngFor="let place of places"

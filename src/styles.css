@@ -7,22 +7,24 @@ html {
   font-family: "Poppins", sans-serif;
 }
 
-.input {
-  @apply w-full rounded-2xl focus:ring-0 border border-second focus:border-second pr-5
-}
-
-.button {
-  @apply inline-block p-4 duration-200 rounded-2xl hover:bg-first hover:text-second lg:hover:bg-second lg:hover:text-first lg:inline-block dark:hover:bg-first dark:hover:text-second;
-}
-
-.btn {
-  @apply px-8 py-2 duration-200 rounded-2xl;
-}
-
-.button-primary {
-  @apply bg-green-900 text-first hover:bg-opacity-70;
-}
-
-.button-secondary {
-  @apply bg-first text-second  hover:bg-opacity-70;
+@layer components {
+  .input {
+    @apply w-full rounded-2xl focus:ring-0 border border-second focus:border-second pr-5
+  }
+  
+  .button {
+    @apply inline-block p-4 duration-200 rounded-2xl hover:bg-first hover:text-second lg:hover:bg-second lg:hover:text-first lg:inline-block dark:hover:bg-first dark:hover:text-second;
+  }
+  
+  .btn {
+    @apply px-8 py-2 duration-200 rounded-2xl;
+  }
+  
+  .button-primary {
+    @apply bg-green-900 text-first hover:bg-opacity-70;
+  }
+  
+  .button-secondary {
+    @apply bg-first text-second hover:bg-opacity-70;
+  }
 }
