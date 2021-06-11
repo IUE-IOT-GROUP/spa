@@ -24,6 +24,8 @@ import { ContentComponent } from './partials/content/content.component';
 import { CardComponent } from './partials/card/card.component';
 import { ModalComponent } from './custom/modal/modal.component';
 import { FormGroupComponent } from './custom/form-group/form-group.component';
+import { DropdownComponent } from './custom/dropdown/dropdown.component';
+import { DropdownItemComponent } from './custom/dropdown/dropdown-item/dropdown-item.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,8 @@ import { FormGroupComponent } from './custom/form-group/form-group.component';
     CardComponent,
     ModalComponent,
     FormGroupComponent,
+    DropdownComponent,
+    DropdownItemComponent,
   ],
   imports: [
     BrowserModule,

@@ -6,7 +6,9 @@ import { Injectable } from '@angular/core';
 export class BreadcrumbService {
   breadcrumbs: string[] = [];
 
-  constructor() { }
+  constructor() {
+    this.breadcrumbs.push('Dashboard');
+  }
 
   add(title: string) {
     this.breadcrumbs.push(title);

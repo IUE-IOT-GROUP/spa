@@ -9,6 +9,10 @@ export class ModalService {
         this.modals.push(id);
     }
 
+    remove(id: string) {
+        this.modals = this.modals.filter(x => x.id !== id);
+    }
+
     toggle(id: string) {
         const modal = this.modals.find(x => x.id === id);
         console.log(modal);

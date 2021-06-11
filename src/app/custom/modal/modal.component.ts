@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, ElementRef, Input, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { ModalService } from './modal.service';
 
 @Component({
@@ -7,7 +7,7 @@ import { ModalService } from './modal.service';
   styleUrls: ['./modal.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class ModalComponent implements OnInit {
+export class ModalComponent implements OnInit, OnDestroy {
   @Input() id: string;
   private element: any;
 
@@ -22,6 +22,12 @@ export class ModalComponent implements OnInit {
 
     this.modalService.add(this);
   }
+
+  ngOnDestroy(): void {
+    this.modalService.remove(this.id);
+    this.element.remove();
+  }
+
 
   toggle() {
     this.element.classList.toggle("hidden");

@@ -37,4 +37,10 @@ export class PlaceService {
       catchError(Global.handleError)
     );
   }
+
+  deletePlace(place: Place): Observable<any> {
+    return this.http.delete<Place>(`${this.placesUrl}/${place.id}`, this.httpOptions).pipe(
+      catchError(Global.handleError)
+    );
+  }
 }
