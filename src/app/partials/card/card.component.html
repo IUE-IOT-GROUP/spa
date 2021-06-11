@@ -1,0 +1,13 @@
+<div class="inline-block w-full h-64 p-4 bg-third md:w-1/2 xl:w-1/3 dark:bg-forth">
+    <div class="flex flex-col h-full transition-colors duration-200 bg-first text-second rounded-xl dark:bg-second dark:text-first">
+        <div class="flex flex-row justify-between flex-shrink-0 p-4 text-lg">
+            <ng-content select="slot-title"></ng-content>
+        </div>
+        <div class="flex items-center justify-center flex-1 p-4 text-center">
+            <ng-content select="slot-content"></ng-content>
+        </div>
+        <div class="flex justify-end flex-shrink-0 p-4">
+            <ng-content select="slot-buttons"></ng-content>
+        </div>
+    </div>
+</div>

@@ -8,11 +8,21 @@ module.exports = {
   purge: {
     content: ["./src/**/*.{html,ts,css,scss,sass,less,styl}"],
   },
-  darkMode: "media", // or 'media' or 'class'
+  darkMode: "class", // or 'media' or 'class'
   theme: {
     extend: {
       fontFamily: {
         poppins: ["Poppins"],
+      },
+      colors: {
+        'first': '#FFFFFF',
+        'second': '#1E1E2D',
+        'third': '#EBEDF3',
+        'forth': '#1A1A27',
+        'success': '#5CB85C',
+        'warning': '#F0AD4E',
+        'danger': '#D9534F',
+        'transparent': 'transparent',
       },
     },
   },

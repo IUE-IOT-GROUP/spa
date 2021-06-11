@@ -1,0 +1,43 @@
+<div class="flex flex-col justify-between h-screen text-lg whitespace-nowrap group"
+    [class]="sidebarToggled ? 'hidden' : 'show'" id="nav-links">
+    <div class="hidden border-b-2 lg:flex border-forth">
+        <a class="hidden mx-4 my-8 font-bold uppercase transition-opacity duration-200 opacity-90 hover:opacity-100 xl:inline-block group-hover:inline-block"
+            [class]="sidebarToggled ? 'hidden' : 'show'" routerLink="/dashboard">IoT Management System</a>
+    </div>
+    <div class="hidden border-t-2 border-forth lg:flex">
+        <ul class="w-full">
+            <li class="w-full md:hidden">
+                <a class="block px-8 py-6 transition-opacity duration-200 transition-color opacity-80 hover:opacity-100 hover:bg-forth"
+                    [class]="sidebarToggled ? 'hidden' : 'show'" routerLink="/dashboard"
+                    [routerLinkActive]="['active', 'bg-forth']" [routerLinkActiveOptions]="{ exact: true }">
+                    <fa-icon [icon]="'home'" [fixedWidth]="true"></fa-icon>
+                    <span class="hidden pl-3 xl:inline-block group-hover:inline-block">Home</span>
+                </a>
+            </li>
+            <li class="w-full md:hidden">
+                <a class="block px-8 py-6 transition-opacity duration-200 transition-color opacity-80 hover:opacity-100 hover:bg-forth"
+                    [class]="sidebarToggled ? 'hidden' : 'show'" routerLink="/dashboard/places"
+                    [routerLinkActive]="['active', 'bg-forth']" [routerLinkActiveOptions]="{ exact: true }">
+                    <fa-icon [icon]="'map-marker'" [fixedWidth]="true"></fa-icon>
+                    <span class="hidden pl-3 xl:inline-block group-hover:inline-block">Places</span>
+                </a>
+            </li>
+            <li class="w-full md:hidden">
+                <a class="block px-8 py-6 transition-opacity duration-200 transition-color opacity-80 hover:opacity-100 hover:bg-forth"
+                    [class]="sidebarToggled ? 'hidden' : 'show'" routerLink="/dashboard/devices"
+                    [routerLinkActive]="['active', 'bg-forth']" [routerLinkActiveOptions]="{ exact: true }">
+                    <fa-icon [icon]="'bug'" [fixedWidth]="true"></fa-icon>
+                    <span class="hidden pl-3 xl:inline-block group-hover:inline-block">Devices</span>
+                </a>
+            </li>
+            <li class="w-full">
+                <a class="block px-8 py-6 transition-opacity duration-200 transition-color opacity-80 hover:opacity-100 hover:bg-forth"
+                    [class]="sidebarToggled ? 'hidden' : 'show'" routerLink="/dashboard/logs"
+                    [routerLinkActive]="['active', 'bg-forth']" [routerLinkActiveOptions]="{ exact: true }">
+                    <fa-icon [icon]="'book-open'" [fixedWidth]="true"></fa-icon>
+                    <span class="hidden pl-3 xl:inline-block group-hover:inline-block">Logs</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

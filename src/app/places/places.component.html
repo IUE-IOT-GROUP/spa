@@ -1,39 +1,113 @@
-<div class="subheader-container">
-  <div class="subheader-item-container">
-    <ul>
-      <li *ngFor="let place of places" [class]="currentTabId === place.id ? 'active' : ''">
-        <a (click)="changeTab(place.id)">{{ place.name }}</a>
-      </li>
-    </ul>
-  </div>
-</div>
-<div class="devices-container">
-  <div *ngFor="let place of places" class="tab-content">
-    <ng-container *ngIf="currentTabId === place.id">
-      <ul>
-        <li>
-          <div class="basic-card">
-            <span class="title-card">Conference Room</span>
+<app-content>
+    <h1 class="text-2xl">Places</h1>
+    <app-card (click)="openAddModal()">
+        <slot-content>
+            <fa-icon class="text-6xl opacity-70 hover:opacity-100"
+                     [icon]="'plus'"
+                     [fixedWidth]="true"></fa-icon>
+        </slot-content>
+    </app-card>
+    <app-card *ngFor="let subPlace of places">
+        <slot-title>
+            <a [routerLink]="['/dashboard/places', subPlace.id]">
+                {{ subPlace.name }}
+            </a>
+        </slot-title>
+        <slot-content>
             <ul>
-              <li>
-                <a href="#"><span class="device-element"><fa-icon [icon]="'bug'" [fixedWidth]="true"></fa-icon
-                  >Device 1</span></a>
-              </li>
-              <li>
-                <a href="#"><span class="device-element"><fa-icon [icon]="'bug'" [fixedWidth]="true"></fa-icon
-                  >Device 2</span></a>
-              </li>
+                <li class="inline-block py-2 mr-4"
+                    *ngFor="let place of subPlace.places">
+                    <a class="opacity-70 hover:opacity-100"
+                       [routerLink]="['/dashboard/places', place.id]">
+                        <fa-icon class="mr-1"
+                                 [icon]="'location-arrow'"
+                                 [fixedWidth]="true"></fa-icon>
+                        <span>{{ place.name }}</span>
+                    </a>
+                </li>
             </ul>
-          </div>
-        </li>
-      </ul>
-      <!-- <ul>
-        <li *ngFor="let place of places">
-          <div class="basic-card tab1">
-            {{ place.name }}
-          </div>
-        </li>
-      </ul> -->
-    </ng-container>
-  </div>
-</div>
+            <hr>
+            <ul>
+                <li class="inline-block py-2 mr-4"
+                    *ngFor="let device of subPlace.devices">
+                    <a class="opacity-70 hover:opacity-100">
+                        <fa-icon class="mr-1"
+                                 [icon]="'bug'"
+                                 [fixedWidth]="true"></fa-icon>
+                        <span>{{ device.name  }}</span>
+                    </a>
+                </li>
+            </ul>
+        </slot-content>
+        <slot-buttons>
+            <a (click)="removePlace(subPlace)">
+                <fa-icon class="ml-2 opacity-70 hover:opacity-100"
+                         [icon]="'trash'"
+                         [fixedWidth]="true">
+                </fa-icon>
+            </a>
+            <app-dropdown>
+                <slot-options>
+                    <app-dropdown-item>Add Place</app-dropdown-item>
+                    <app-dropdown-item>Add Device</app-dropdown-item>
+                </slot-options>
+            </app-dropdown>
+        </slot-buttons>
+    </app-card>
+
+    <h1 class="text-2xl"
+        *ngIf="devices.length > 0">Devices</h1>
+    <app-card *ngFor="let device of devices">
+        <slot-content class="text-2xl">{{ device.name }}</slot-content>
+    </app-card>
+</app-content>
+
+<app-modal id="removePlaceConfirmationModal">
+    <slot-title>Are You Sure?</slot-title>
+
+    <p>
+        Are you sure to remove this place? This will remove all children places and devices belonging to this place.
+    </p>
+
+    <slot-buttons>
+        <button (click)="onConfirmDelete()"
+                class="btn button-danger">Remove</button>
+    </slot-buttons>
+
+</app-modal>
+
+<app-modal id="addPlaceModal">
+    <slot-title>
+        Add Place
+    </slot-title>
+    <form [formGroup]="addPlaceForm"
+          (ngSubmit)="onSubmit()">
+        <div class="space-y-5">
+            <app-form-group for="name"
+                            label="Name">
+                <input type="text"
+                       formControlName="name"
+                       class="input">
+            </app-form-group>
+            <app-form-group for="parent"
+                            label="Parent"
+                            *ngIf="place != null">
+                <input type="text"
+                       formControlName="parent_name"
+                       class="input"
+                       readonly>
+                <input type="hidden"
+                       formControlName="parent"
+                       class="input"
+                       [value]="place.id">
+            </app-form-group>
+        </div>
+    </form>
+
+    <slot-buttons>
+        <button (click)="onSubmit()"
+                class="btn button-primary">
+            Save
+        </button>
+    </slot-buttons>
+</app-modal>
