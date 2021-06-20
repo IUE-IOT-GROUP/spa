@@ -1,13 +1,25 @@
-import { HttpErrorResponse } from "@angular/common/http";
-import { throwError } from "rxjs";
-import { HttpError } from "./models/http-error";
-import { User } from "./models/user";
+import {HttpErrorResponse} from "@angular/common/http";
+import {throwError} from "rxjs";
+import {HttpError} from "./models/http-error";
+import {Injectable} from "@angular/core";
 
+export const location = localStorage.getItem('environment');
 export const env = {
-    apiUrl: "https://api.iot-ms.xyz/api"
+    apiUrl: location == 'fog' ? "https://ims.local/api" : "https://api.iot-ms.xyz/api",
+    cloudUrl: "https://api.iot-ms.xyz/api",
+    fogUrl: "https://ims.local/api"
 }
 
+@Injectable({
+    providedIn: 'root'
+})
 export class Global {
+    public environment;
+
+    constructor() {
+        this.environment = localStorage.getItem('environment');
+    }
+
     public static handleError(error: HttpErrorResponse) {
         let errorModel: HttpError = new HttpError();
         if (error.status === 0) {
@@ -26,5 +38,9 @@ export class Global {
         }
 
         return throwError(errorModel);
+    }
+
+    isFog() {
+        return this.environment == 'fog';
     }
 }

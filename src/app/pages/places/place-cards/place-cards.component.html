@@ -1,0 +1,26 @@
+<app-card (click)="openAddModal('Add Place', addModalTemplate, submitButton)" *ngIf="global.isFog()">
+    <slot-content>
+        <fa-icon class="text-6xl opacity-70 hover:opacity-100" [icon]="'plus'" [fixedWidth]="true"></fa-icon>
+    </slot-content>
+</app-card>
+<place-card *ngFor="let subPlace of places" [place]="subPlace"></place-card>
+
+<ng-template #addModalTemplate>
+    <form [formGroup]="addPlaceForm"
+          (ngSubmit)="onSubmit()">
+        <div class="space-y-5">
+            <app-form-group for="name" label="Name">
+                <input type="text" formControlName="name" class="input">
+            </app-form-group>
+            <app-form-group for="parent" label="Parent" *ngIf="place != null">
+                <input type="text" formControlName="parent_name" class="input" readonly>
+                <input type="hidden" formControlName="parent_id" class="input">
+            </app-form-group>
+        </div>
+    </form>
+</ng-template>
+<ng-template #submitButton>
+    <button (click)="onSubmit()" class="btn button-primary">
+        Save
+    </button>
+</ng-template>

@@ -1,4 +1,5 @@
-import { Component, ElementRef, OnInit, ViewEncapsulation } from '@angular/core';
+import {Component, ElementRef, Input, OnInit, ViewEncapsulation} from '@angular/core';
+import {faPlus} from "@fortawesome/free-solid-svg-icons/faPlus";
 
 @Component({
   selector: 'app-dropdown',
@@ -10,6 +11,7 @@ import { Component, ElementRef, OnInit, ViewEncapsulation } from '@angular/core'
 })
 export class DropdownComponent implements OnInit {
   open: boolean = false;
+  @Input() icon = faPlus;
 
   constructor(private _elementRef: ElementRef) {
   }

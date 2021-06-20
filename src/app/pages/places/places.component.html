@@ -1,0 +1,10 @@
+<app-content>
+    <ng-container *ngIf="places$ | async as places; else loading">
+        <places-place-cards [places]="places"></places-place-cards>
+    </ng-container>
+
+    <ng-template #loading>
+        <div class="text-center m-auto">Loading...</div>
+    </ng-template>
+</app-content>
+

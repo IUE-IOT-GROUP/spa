@@ -1,0 +1,59 @@
+<app-card (click)="openAddModal('Add Device', addModalTemplate, submitButton)" *ngIf="global.isFog()">
+    <slot-content>
+        <fa-icon class="text-6xl opacity-70 hover:opacity-100" [icon]="'plus'" [fixedWidth]="true"></fa-icon>
+    </slot-content>
+</app-card>
+<ng-container *ngIf="devices?.length > 0">
+    <app-card *ngFor="let device of devices">
+        <slot-content class="text-2xl">{{ device.name }}</slot-content>
+    </app-card>
+</ng-container>
+
+<ng-template #addModalTemplate>
+    <form [formGroup]="addDeviceForm"
+          (ngSubmit)="onSubmit()">
+        <div class="space-y-5">
+            <app-form-group for="name" label="Name">
+                <input type="text" formControlName="name" class="input">
+            </app-form-group>
+            <app-form-group for="parent_place" label="Parent Place">
+                <select formControlName="parent_place" *ngIf="places.length > 0" class="input">
+                    <option *ngFor="let place of places" [value]="place.id">{{ place.name }}</option>
+                </select>
+            </app-form-group>
+            <app-form-group for="fog_name" label="Fog" *ngIf="fogs.length > 0">
+                <select formControlName="fog_id" class="input">
+                    <option *ngFor="let fog of fogs" [value]="fog.id">{{ fog.name }}</option>
+                </select>
+            </app-form-group>
+            <app-form-group for="place_name" label="Place">
+                <input type="text" formControlName="place_name" class="input" readonly>
+                <input type="hidden" formControlName="place_id" class="input">
+            </app-form-group>
+            <app-form-group for="mac_address" label="MAC Address">
+                <input type="text" formControlName="mac_address" class="input">
+            </app-form-group>
+            <app-form-group for="ip_address" label="IP Address">
+                <input type="text" formControlName="ip_address" class="input">
+            </app-form-group>
+            <h4>Parameters
+                <span class="p-3 rounded bg-second text-first ml-1 border border-second hover:bg-first hover:text-second transition-colors duration-300 cursor-pointer" (click)="addParameter()">+</span>
+            </h4>
+            <div formArrayName="parameters">
+                    <div *ngFor="let parameter of parameters.controls; let i=index" [formGroupName]="i" class="flex justify-center items-center mb-3">
+                        <input type="text" formControlName="name" placeholder="Name"
+                               class="pr-5 rounded-l-2xl border border-r-0 border-second focus:ring-0 focus:border-second">
+                        <input type="text" formControlName="expected_parameter" placeholder="Expected parameter"
+                               class="pr-5border border-second focus:ring-0 focus:border-second">
+                        <input type="text" formControlName="unit" placeholder="Unit"
+                               class="pr-5 rounded-r-2xl border border-l-0 border-second focus:ring-0 focus:border-second">
+                    </div>
+            </div>
+        </div>
+    </form>
+</ng-template>
+<ng-template #submitButton>
+    <button (click)="onSubmit()" class="btn button-primary">
+        Save
+    </button>
+</ng-template>

@@ -1,9 +1,11 @@
 import { Device } from "./device";
+import {Fog} from "./fog";
 
 export class Place {
-    id: number;
+    id: string;
     name: string;
-    parent_id: number;
+    parent_id: string;
     places: Place[];
     devices: Device[];
+    fogs: Fog[];
 }

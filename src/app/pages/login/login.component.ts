@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpError } from '../models/http-error';
-import { Login } from '../models/login';
-import { User } from '../models/user';
-import { LoginService } from "../services/login.service";
+import { HttpError } from '../../models/http-error';
+import { Login } from '../../models/login';
+import { User } from '../../models/user';
+import { LoginService } from "../../services/login.service";
 
 @Component({
   selector: 'app-login',
@@ -12,6 +12,7 @@ import { LoginService } from "../services/login.service";
 export class LoginComponent implements OnInit {
   email: string;
   password: string;
+  environment: boolean = true;
   error: HttpError;
 
   constructor(
@@ -23,7 +24,14 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    let loginModel = new Login(this.email, this.password);
+    console.log(this.environment);
+    let e = 'fog';
+
+    if (!this.environment) {
+      e = 'cloud';
+    }
+
+    let loginModel = new Login(this.email, this.password, e);
 
     this.loginService.login(loginModel).subscribe(
       (success) => {
@@ -31,8 +39,9 @@ export class LoginComponent implements OnInit {
         this.loginService.token = success.token;
         this.loginService.username = success.username;
         this.loginService.email = success.email;
+        this.loginService.environment = e;
 
-        this.router.navigate(['/dashboard']);
+        window.location.href = '/dashboard';
       },
       (error) => {
         this.error = error;

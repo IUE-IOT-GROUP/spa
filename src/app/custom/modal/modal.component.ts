@@ -1,36 +1,22 @@
-import { Component, ElementRef, Input, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
-import { ModalService } from './modal.service';
+import {Component, EventEmitter, Input, Output, TemplateRef} from '@angular/core';
 
 @Component({
-  selector: 'app-modal',
-  templateUrl: './modal.component.html',
-  styleUrls: ['./modal.component.css'],
-  encapsulation: ViewEncapsulation.None
+    selector: 'app-modal',
+    templateUrl: './modal.component.html',
+    styleUrls: ['./modal.component.css'],
+    animations: []
 })
-export class ModalComponent implements OnInit, OnDestroy {
-  @Input() id: string;
-  private element: any;
+export class ModalComponent {
+    @Input() title;
+    @Input() contentRef!: TemplateRef<any>;
+    @Input() buttons!: TemplateRef<any>;
 
-  constructor(private el: ElementRef, private modalService: ModalService) {
-    this.element = el.nativeElement;
-  }
+    @Input() errors: string[] = [];
 
-  ngOnInit(): void {
-    this.element.classList.add("hidden");
-    // document.body.classList.ad
-    document.body.appendChild(this.element);
+    @Output()
+    closed = new EventEmitter();
 
-    this.modalService.add(this);
-  }
-
-  ngOnDestroy(): void {
-    this.modalService.remove(this.id);
-    this.element.remove();
-  }
-
-
-  toggle() {
-    this.element.classList.toggle("hidden");
-  }
+    constructor() {
+    }
 
 }
