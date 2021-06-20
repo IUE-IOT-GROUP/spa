@@ -1,0 +1,67 @@
+<app-content>
+    <ng-container *ngIf="place != null">
+        <div *ngIf="place != null" class="pb-10">
+            <h1 class="inline-block text-3xl font-extrabold text-gray-900 tracking-tight">
+                {{ place.name }}
+
+                <a (click)="openEditModal('Edit Place', editModal, editModalButtons)">
+                    <fa-icon class="ml-2 opacity-70 hover:opacity-100" [icon]="'edit'" [fixedWidth]="true"></fa-icon>
+                </a>
+            </h1>
+
+            <ng-template #editModal>
+                <div class="space-y-5">
+                    <app-form-group for="name" label="Name">
+                        <input type="text" [(ngModel)]="place.name">
+                    </app-form-group>
+                </div>
+            </ng-template>
+
+            <ng-template #editModalButtons>
+                <button (click)="onEdit(place)"
+                        class="btn button-primary">
+                    Save
+                </button>
+            </ng-template>
+        </div>
+
+        <div class="flex justify-around bg-first p-3">
+            <h1 class="text-2xl cursor-pointer w-full p-3 m-1 border border-second text-center hover:bg-second hover:text-first"
+                [class]="currentTab == 'places' ? 'bg-second text-first' : ''"
+                (click)="changeTab('places')">
+                Places
+            </h1>
+            <h1 class="text-2xl cursor-pointer w-full p-3 m-1 border border-second text-center hover:bg-second hover:text-first"
+                [class]="currentTab == 'fogs' ? 'bg-second text-first' : ''"
+                (click)="changeTab('fogs')">
+                Fogs
+            </h1>
+            <h1 class="text-2xl cursor-pointer w-full p-3 m-1 border border-second text-center hover:bg-second hover:text-first"
+                [class]="currentTab == 'devices' ? 'bg-second text-first' : ''"
+                (click)="changeTab('devices')">
+                Devices
+            </h1>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="currentTab == 'places'">
+        <ng-container *ngIf="places$ | async as places; else loading">
+            <places-place-cards [places]="places" [place]="place"></places-place-cards>
+        </ng-container>
+    </ng-container>
+    <ng-container *ngIf="currentTab == 'fogs'">
+        <ng-container *ngIf="fogs$ | async as fogs; else loading">
+            <places-fog-cards [fogs]="fogs" [place]="place"></places-fog-cards>
+        </ng-container>
+    </ng-container>
+    <ng-container *ngIf="currentTab == 'devices'">
+        <ng-container *ngIf="devices$ | async as devices; else loading">
+            <places-device-cards [devices]="devices" [place]="place"></places-device-cards>
+        </ng-container>
+    </ng-container>
+
+    <ng-template #loading>
+        <div class="text-center m-auto">Loading...</div>
+    </ng-template>
+</app-content>
+

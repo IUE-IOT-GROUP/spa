@@ -1,0 +1,60 @@
+<app-card>
+    <slot-title>
+        <a [routerLink]="['/dashboard/places', place.id]" *ngIf="!editing">
+            {{ place.name }}
+        </a>
+        <ng-container *ngIf="editing">
+            <div class="flex justify-items-end items-center">
+                <form (submit)="save()">
+                    <input type="text" class="input" name="name" [(ngModel)]="place.name">
+                </form>
+                <span (click)="edit()"><fa-icon [icon]="'times'" [fixedWidth]="true"></fa-icon></span>
+            </div>
+        </ng-container>
+    </slot-title>
+    <slot-content>
+        <ul>
+            <li class="inline-block py-2 mr-4" *ngFor="let place of place.places">
+                <a class="opacity-70 hover:opacity-100" [routerLink]="['/dashboard/places', place.id]">
+                    <fa-icon class="mr-1" [icon]="'location-arrow'" [fixedWidth]="true"></fa-icon>
+                    <span>{{ place.name }}</span>
+                </a>
+            </li>
+        </ul>
+        <hr>
+        <ul>
+            <li class="inline-block py-2 mr-4" *ngFor="let device of place.devices">
+                <a class="opacity-70 hover:opacity-100">
+                    <fa-icon class="mr-1" [icon]="'bug'" [fixedWidth]="true"></fa-icon>
+                    <span>{{ device.name  }}</span>
+                </a>
+            </li>
+        </ul>
+    </slot-content>
+    <slot-buttons>
+        <a *ngIf="!editing" (click)="edit()"><fa-icon class="ml-2 opacity-70 hover:opacity-100" [icon]="'edit'" [fixedWidth]="true"></fa-icon></a>
+        <a *ngIf="editing" (click)="save()"><fa-icon class="ml-2 opacity-70 hover:opacity-100" [icon]="'save'" [fixedWidth]="true"></fa-icon></a>
+        <a (click)="removePlace('Are You Sure?', showModal, buttons)">
+            <fa-icon class="ml-2 opacity-70 hover:opacity-100"
+                     [icon]="'trash'"
+                     [fixedWidth]="true">
+            </fa-icon>
+        </a>
+        <app-dropdown>
+            <slot-options>
+                <app-dropdown-item>Add Place</app-dropdown-item>
+                <app-dropdown-item>Add Device</app-dropdown-item>
+            </slot-options>
+        </app-dropdown>
+    </slot-buttons>
+</app-card>
+
+<ng-template #showModal>
+    <p>
+        Are you sure to remove this place? This will remove all children places and devices belonging to this place.
+    </p>
+</ng-template>
+
+<ng-template #buttons>
+    <button (click)="onConfirmDelete()" class="btn button-danger">Remove</button>
+</ng-template>

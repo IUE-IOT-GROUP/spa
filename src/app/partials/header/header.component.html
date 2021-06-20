@@ -22,14 +22,15 @@
            routerLink="/dashboard/settings"
            [routerLinkActive]="['!inline-block', 'lg:!hidden']">Settings</a>
     </div>
+    <div>Connected to {{ global.isFog() ? 'Fog' : 'Cloud'}}</div>
     <div class="flex items-center mr-4"
          (click)="toggleUserBar()">
         <a
-           class="p-4 transition-colors duration-200 cursor-pointer rounded-2xl group hover:bg-first hover:text-second lg:hover:bg-first lg:hover:text-second dark:hover:bg-first dark:hover:text-second lg:dark:hover:bg-first lg:dark:hover:text-second">
+                class="p-4 transition-colors duration-200 cursor-pointer rounded-2xl group hover:bg-first hover:text-second lg:hover:bg-first lg:hover:text-second dark:hover:bg-first dark:hover:text-second lg:dark:hover:bg-first lg:dark:hover:text-second">
             <span class="mr-1 opacity-60">Hi,</span>
             <span class="mr-2 capitalize">{{ username }}</span>
             <span
-                  class="px-3 py-2 uppercase rounded-xl bg-first text-second group-hover:bg-second group-hover:text-first lg:bg-second lg:text-first lg:group-hover:bg-first lg:group-hover:text-second dark:bg-first dark:text-second dark:group-hover:bg-second dark:group-hover:text-first">{{ username | getFirstCharacter }}</span>
+                    class="px-3 py-2 uppercase rounded-xl bg-first text-second group-hover:bg-second group-hover:text-first lg:bg-second lg:text-first lg:group-hover:bg-first lg:group-hover:text-second dark:bg-first dark:text-second dark:group-hover:bg-second dark:group-hover:text-first">{{ username | getFirstCharacter }}</span>
         </a>
     </div>
 </div>
@@ -41,7 +42,8 @@
         <div class="flex flex-col px-4 py-3 border-b-2 border-forth">
             <div class="flex justify-between mt-4 mb-8">
                 <span class="text-2xl">User Profile</span>
-                <fa-icon class="mt-0.5 text-xl cursor-pointer transition-opacity duration-200 opacity-80 hover:opacity-100"
+                <fa-icon (click)="toggleUserBar()"
+                         class="mt-0.5 text-xl cursor-pointer transition-opacity duration-200 opacity-80 hover:opacity-100"
                          [icon]="'times'"
                          [fixedWidth]="true"></fa-icon>
             </div>

@@ -2,13 +2,16 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth/auth.guard';
 import { GuestGuard } from './auth/guest.guard';
-import { DevicesComponent } from './devices/devices.component';
-import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
+import { DevicesComponent } from './pages/devices/devices.component';
+import { HomeComponent } from './pages/home/home.component';
+import { LoginComponent } from './pages/login/login.component';
 import { LogsComponent } from './logs/logs.component';
 import { MainComponent } from './main/main.component';
-import { PlacesComponent } from './places/places.component';
-import { SettingsComponent } from './settings/settings.component';
+import { PlacesComponent } from './pages/places/places.component';
+import { SettingsComponent } from './pages/settings/settings.component';
+import {DeviceComponent} from "./pages/device/device.component";
+import {FogsComponent} from "./pages/fogs/fogs.component";
+import {SubPlacesComponent} from "./pages/places/sub-places/sub-places.component";
 
 const routes: Routes = [
   {
@@ -25,12 +28,24 @@ const routes: Routes = [
         component: DevicesComponent
       },
       {
+        path: 'devices/:id',
+        component: DeviceComponent
+      },
+      {
         path: 'places',
         component: PlacesComponent
       },
       {
         path: 'places/:id',
-        component: PlacesComponent
+        component: SubPlacesComponent
+      },
+      {
+        path: 'fogs',
+        component: FogsComponent
+      },
+      {
+        path: 'fogs/:id',
+        component: FogsComponent
       },
       {
         path: 'logs',

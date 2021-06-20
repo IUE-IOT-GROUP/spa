@@ -1,21 +1,32 @@
-import { Injectable } from '@angular/core';
-import { ModalComponent } from './modal.component';
+import {Injectable, TemplateRef} from '@angular/core';
+import {NgElement, WithProperties} from "@angular/elements";
+import {ModalComponent} from "./modal.component";
 
-@Injectable({ providedIn: 'root' })
+@Injectable({providedIn: 'root'})
 export class ModalService {
-    private modals: ModalComponent[] = [];
 
-    add(id: ModalComponent) {
-        this.modals.push(id);
+    constructor() {
     }
 
-    remove(id: string) {
-        this.modals = this.modals.filter(x => x.id !== id);
+    show(title: string, templateRef: TemplateRef<any>, buttons?: TemplateRef<any>) {
+        const popupEl = document.createElement('modal-element') as NgElement & WithProperties<{ contentRef: TemplateRef<any>, title: string, buttons: TemplateRef<any> }>;
+
+        popupEl.addEventListener('closed', () => {
+            document.body.removeChild(popupEl)
+        });
+
+        popupEl.title = title;
+        popupEl.contentRef = templateRef;
+
+        if (buttons != undefined)
+            popupEl.buttons = buttons;
+
+        document.body.appendChild(popupEl);
+
+        return popupEl;
     }
 
-    toggle(id: string) {
-        const modal = this.modals.find(x => x.id === id);
-        console.log(modal);
-        modal.toggle();
+    close() {
+        document.querySelector('modal-element').dispatchEvent(new Event('closed'));
     }
 }
