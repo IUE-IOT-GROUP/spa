@@ -8,8 +8,20 @@ html {
 }
 
 @layer components {
+  .aside-tab {
+    @apply block px-8 py-6 transition-opacity duration-200 opacity-80 hover:opacity-100 hover:bg-forth
+  }
+
+  .aside-tab-name {
+    @apply hidden pl-3 xl:inline-block group-hover:inline-block
+  }
+
+  .header-tab {
+    @apply hidden p-4 ml-4 duration-200 rounded-2xl bg-first text-second lg:bg-second lg:text-first dark:text-second dark:bg-first
+  }
+
   .input {
-    @apply w-full rounded-2xl focus:ring-0 border border-second focus:border-second pr-5
+    @apply w-full rounded-2xl focus:ring-0 border-2 dark:bg-second dark:text-first dark:border-forth dark:focus:border-forth border-third focus:border-third pr-5
   }
 
   .button {
@@ -32,3 +44,17 @@ html {
     @apply bg-danger text-first hover:bg-opacity-70;
   }
 }
+
+.dark .ngx-charts text {
+  fill: rgba(255,2555,255, 0.7);
+}
+
+.ngx-charts text {
+  fill: rgba(30, 30, 45, 0.7);
+}
+
+.dark .ngx-charts .gridline-path {
+  stroke: #1A1A27;
+  stroke-width: 2;
+}
+

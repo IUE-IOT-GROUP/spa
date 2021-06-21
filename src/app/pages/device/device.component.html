@@ -1,10 +1,8 @@
 <ng-container *ngIf="device$ | async as device">
     <device-info [device]="device"></device-info>
-
     <ng-container *ngIf="deviceData$ | async as deviceData">
         <div *ngFor="let data of deviceData" class="grid gap-4">
             <device-parameter-info [dataType]="data" [device_id]="device.id"></device-parameter-info>
         </div>
     </ng-container>
-
 </ng-container>

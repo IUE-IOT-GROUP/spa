@@ -10,48 +10,23 @@
         </ng-container>
     </slot-title>
     <slot-content>
-        <div>MAC Address: {{ device.mac_address}}</div>
-        <div>IP Address: {{ device.ip_address}}</div>
-        <div>
+        <div class="opacity-80">MAC Address: {{ device.mac_address}}</div>
+        <div class="opacity-80">IP Address: {{ device.ip_address}}</div>
+        <div class="opacity-80">
             Parameters:
             <ul class="inline">
                 <li class="inline ml-1" *ngFor="let p of device.parameters">{{ p.name }}</li>
             </ul>
         </div>
-        <!--<ul>
-            <li class="inline-block py-2 mr-4" *ngFor="let device of device.devices">
-                <a class="opacity-70 hover:opacity-100" [routerLink]="['/dashboard/devices', device.id]">
-                    <fa-icon class="mr-1" [icon]="'location-arrow'" [fixedWidth]="true"></fa-icon>
-                    <span>{{ device.name }}</span>
-                </a>
-            </li>
-        </ul>
-        <hr>
-        <ul>
-            <li class="inline-block py-2 mr-4" *ngFor="let device of device.devices">
-                <a class="opacity-70 hover:opacity-100">
-                    <fa-icon class="mr-1" [icon]="'bug'" [fixedWidth]="true"></fa-icon>
-                    <span>{{ device.name  }}</span>
-                </a>
-            </li>
-        </ul>-->
     </slot-content>
     <slot-buttons>
-        <a *ngIf="!editing" (click)="edit()"><fa-icon class="ml-2 opacity-70 hover:opacity-100" [icon]="'edit'" [fixedWidth]="true"></fa-icon></a>
-        <a *ngIf="editing" (click)="save()"><fa-icon class="ml-2 opacity-70 hover:opacity-100" [icon]="'save'" [fixedWidth]="true"></fa-icon></a>
-        <a (click)="removeDevice('Are You Sure?', showModal, buttons)">
-            <fa-icon class="ml-2 opacity-70 hover:opacity-100"
-                     [icon]="'trash'"
-                     [fixedWidth]="true">
-            </fa-icon>
-        </a>
+        
     </slot-buttons>
 </app-card>
 
 <ng-template #showModal>
-    <p>
-        Are you sure to remove this place? This will remove all children places and devices belonging to this place.
-    </p>
+    <span>Are you sure to remove this place? This will remove all children places and devices belonging to this
+        place.</span>
 </ng-template>
 
 <ng-template #buttons>

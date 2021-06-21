@@ -1,49 +1,56 @@
-<app-content>
+<div
+    class="flex items-center text-lg border-b-2 bg-second text-first border-forth lg:border-third lg:bg-first lg:text-second lg:dark:border-forth lg:dark:bg-second lg:dark:text-first">
     <ng-container *ngIf="place != null">
-        <div *ngIf="place != null" class="pb-10">
-            <h1 class="inline-block text-3xl font-extrabold text-gray-900 tracking-tight">
-                {{ place.name }}
-
+        <div class="flex justify-between w-full">
+            <div *ngIf="place != null" class="px-4 ml-4 py-7 sm:py-8">
+                <span class="text-lg text-second dark:text-first opacity-80">
+                    {{ place.name }}
+                </span>
                 <a (click)="openEditModal('Edit Place', editModal, editModalButtons)">
-                    <fa-icon class="ml-2 opacity-70 hover:opacity-100" [icon]="'edit'" [fixedWidth]="true"></fa-icon>
+                    <fa-icon class="ml-1 cursor-pointer opacity-70 hover:opacity-100" [icon]="'edit'"
+                        [fixedWidth]="true">
+                    </fa-icon>
                 </a>
-            </h1>
 
-            <ng-template #editModal>
-                <div class="space-y-5">
-                    <app-form-group for="name" label="Name">
-                        <input type="text" [(ngModel)]="place.name">
-                    </app-form-group>
-                </div>
-            </ng-template>
+                <ng-template #editModal>
+                    <div class="space-y-5">
+                        <app-form-group for="name" label="Name">
+                            <input type="text" [(ngModel)]="place.name">
+                        </app-form-group>
+                    </div>
+                </ng-template>
 
-            <ng-template #editModalButtons>
-                <button (click)="onEdit(place)"
-                        class="btn button-primary">
-                    Save
-                </button>
-            </ng-template>
-        </div>
-
-        <div class="flex justify-around bg-first p-3">
-            <h1 class="text-2xl cursor-pointer w-full p-3 m-1 border border-second text-center hover:bg-second hover:text-first"
-                [class]="currentTab == 'places' ? 'bg-second text-first' : ''"
-                (click)="changeTab('places')">
-                Places
-            </h1>
-            <h1 class="text-2xl cursor-pointer w-full p-3 m-1 border border-second text-center hover:bg-second hover:text-first"
-                [class]="currentTab == 'fogs' ? 'bg-second text-first' : ''"
-                (click)="changeTab('fogs')">
-                Fogs
-            </h1>
-            <h1 class="text-2xl cursor-pointer w-full p-3 m-1 border border-second text-center hover:bg-second hover:text-first"
-                [class]="currentTab == 'devices' ? 'bg-second text-first' : ''"
-                (click)="changeTab('devices')">
-                Devices
-            </h1>
+                <ng-template #editModalButtons>
+                    <button (click)="onEdit(place)" class="btn button-primary">
+                        Save
+                    </button>
+                </ng-template>
+            </div>
+            <div class="flex p-4 text-lg">
+                <span
+                    class="p-3 text-center cursor-pointer opacity-90 sm:p-4 rounded-2xl hover:bg-second hover:text-first dark:hover:bg-first dark:hover:text-second"
+                    [class]="currentTab == 'places' ? 'bg-second text-first dark:bg-first dark:text-second' : ''"
+                    (click)="changeTab('places')">
+                    Places
+                </span>
+                <span
+                    class="p-3 ml-2 text-center cursor-pointer opacity-90 sm:p-4 sm:ml-4 rounded-2xl hover:bg-second hover:text-first dark:hover:bg-first dark:hover:text-second"
+                    [class]="currentTab == 'devices' ? 'bg-second text-first dark:bg-first dark:text-second' : ''"
+                    (click)="changeTab('devices')">
+                    Devices
+                </span>
+                <span
+                    class="p-3 ml-2 text-center cursor-pointer opacity-90 sm:p-4 sm:ml-4 rounded-2xl hover:bg-second hover:text-first dark:hover:bg-first dark:hover:text-second"
+                    [class]="currentTab == 'fogs' ? 'bg-second text-first dark:bg-first dark:text-second' : ''"
+                    (click)="changeTab('fogs')">
+                    Fogs
+                </span>
+            </div>
         </div>
     </ng-container>
+</div>
 
+<app-content>
     <ng-container *ngIf="currentTab == 'places'">
         <ng-container *ngIf="places$ | async as places; else loading">
             <places-place-cards [places]="places" [place]="place"></places-place-cards>
@@ -61,7 +68,10 @@
     </ng-container>
 
     <ng-template #loading>
-        <div class="text-center m-auto">Loading...</div>
+        <div class="z-50 opacity-75">
+            <span class="flex justify-center text-6xl opacity-75 text-second dark:text-first">
+                <fa-icon class="animate-spin" [icon]="'circle-notch'" [fixedWidth]="true"></fa-icon>
+            </span>
+        </div>
     </ng-template>
 </app-content>
-

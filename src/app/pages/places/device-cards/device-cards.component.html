@@ -5,13 +5,12 @@
 </app-card>
 <ng-container *ngIf="devices?.length > 0">
     <app-card *ngFor="let device of devices">
-        <slot-content class="text-2xl">{{ device.name }}</slot-content>
+        <slot-content class="text-2xl opacity-80">{{ device.name }}</slot-content>
     </app-card>
 </ng-container>
 
 <ng-template #addModalTemplate>
-    <form [formGroup]="addDeviceForm"
-          (ngSubmit)="onSubmit()">
+    <form [formGroup]="addDeviceForm" (ngSubmit)="onSubmit()">
         <div class="space-y-5">
             <app-form-group for="name" label="Name">
                 <input type="text" formControlName="name" class="input">
@@ -37,17 +36,20 @@
                 <input type="text" formControlName="ip_address" class="input">
             </app-form-group>
             <h4>Parameters
-                <span class="p-3 rounded bg-second text-first ml-1 border border-second hover:bg-first hover:text-second transition-colors duration-300 cursor-pointer" (click)="addParameter()">+</span>
+                <span
+                    class="p-3 ml-1 transition-colors duration-300 border rounded cursor-pointer bg-second text-first border-second hover:bg-first hover:text-second"
+                    (click)="addParameter()">+</span>
             </h4>
             <div formArrayName="parameters">
-                    <div *ngFor="let parameter of parameters.controls; let i=index" [formGroupName]="i" class="flex justify-center items-center mb-3">
-                        <input type="text" formControlName="name" placeholder="Name"
-                               class="pr-5 rounded-l-2xl border border-r-0 border-second focus:ring-0 focus:border-second">
-                        <input type="text" formControlName="expected_parameter" placeholder="Expected parameter"
-                               class="pr-5border border-second focus:ring-0 focus:border-second">
-                        <input type="text" formControlName="unit" placeholder="Unit"
-                               class="pr-5 rounded-r-2xl border border-l-0 border-second focus:ring-0 focus:border-second">
-                    </div>
+                <div *ngFor="let parameter of parameters.controls; let i=index" [formGroupName]="i"
+                    class="flex items-center justify-center mb-3">
+                    <input type="text" formControlName="name" placeholder="Name"
+                        class="pr-5 border border-r-0 rounded-l-2xl border-second focus:ring-0 focus:border-second">
+                    <input type="text" formControlName="expected_parameter" placeholder="Expected parameter"
+                        class="pr-5 border border-second focus:ring-0 focus:border-second">
+                    <input type="text" formControlName="unit" placeholder="Unit"
+                        class="pr-5 border border-l-0 rounded-r-2xl border-second focus:ring-0 focus:border-second">
+                </div>
             </div>
         </div>
     </form>

@@ -19,7 +19,6 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {GetFirstCharacterPipe} from './pipes/get-first-character.pipe';
 import {AuthInterceptorInterceptor} from './interceptors/auth-interceptor.interceptor';
 import {AsideComponent} from './partials/aside/aside.component';
-import {SubheaderComponent} from './partials/subheader/subheader.component';
 import {ContentComponent} from './partials/content/content.component';
 import {CardComponent} from './partials/card/card.component';
 import {ModalComponent} from './custom/modal/modal.component';
@@ -59,7 +58,6 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
         FooterComponent,
         GetFirstCharacterPipe,
         AsideComponent,
-        SubheaderComponent,
         ContentComponent,
         CardComponent,
         ModalComponent,

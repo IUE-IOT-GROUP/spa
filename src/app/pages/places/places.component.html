@@ -4,7 +4,10 @@
     </ng-container>
 
     <ng-template #loading>
-        <div class="text-center m-auto">Loading...</div>
+        <div class="z-50 opacity-75">
+            <span class="flex justify-center text-6xl opacity-75 text-second dark:text-first">
+                <fa-icon class="animate-spin" [icon]="'circle-notch'" [fixedWidth]="true"></fa-icon>
+            </span>
+        </div>
     </ng-template>
 </app-content>
-

@@ -1,15 +1,13 @@
 <app-card (click)="openAddModal('Add Device', addModalTemplate, submitButton)">
     <slot-content>
-        <fa-icon class="text-6xl opacity-70 hover:opacity-100"
-                 [icon]="'plus'"
-                 [fixedWidth]="true"></fa-icon>
+        <fa-icon class="text-6xl cursor-pointer opacity-70 hover:opacity-100" [icon]="'plus'" [fixedWidth]="true">
+        </fa-icon>
     </slot-content>
 </app-card>
 <device-card *ngFor="let device of devices" [device]="device"></device-card>
 
 <ng-template #addModalTemplate>
-    <form [formGroup]="addDeviceForm"
-          (ngSubmit)="onSubmit()">
+    <form [formGroup]="addDeviceForm" (ngSubmit)="onSubmit()">
         <div class="space-y-5">
             <app-form-group for="name" label="Name">
                 <input type="text" formControlName="name" class="input">

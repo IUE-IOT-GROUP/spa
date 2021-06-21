@@ -1,46 +1,37 @@
-<div class="border border-second flex flex-col mb-2">
-    <h1 class="text-2xl inline-block">{{ dataType.details['name'] }}</h1>
-    <div class="min-h-screen w-1/2 m-auto">
-        <div class="flex justify-around">
-            <a class="py-1 px-2 rounded hover:bg-gray-600 hover:text-white cursor-pointer"
-               [class]="period=='daily' ? 'text-first bg-second' : 'bg-first text-second'"
-               (click)="changePeriod('daily')"
-            >
-                Daily</a>
-            <a class="py-1 px-2 rounded hover:bg-gray-600 hover:text-white cursor-pointer"
-               [class]="period=='weekly' ? 'text-first bg-second' : 'bg-first text-second'"
-               (click)="changePeriod('weekly')"
-            >Weekly</a>
-            <a class="py-1 px-2 rounded hover:bg-gray-600 hover:text-white cursor-pointer"
-               [class]="period=='monthly' ? 'text-first bg-second' : 'bg-first text-second'"
-               (click)="changePeriod('monthly')"
-            >Monthly</a>
+<div class="inline-block w-full px-4 pb-4 bg-third dark:bg-forth">
+    <div
+        class="flex flex-col h-full transition-colors duration-200 bg-first text-second rounded-xl dark:bg-second dark:text-first">
+        <div class="flex flex-row justify-between flex-shrink-0 p-4 text-lg">
+            <span>{{ dataType.details['name'] }}</span>
         </div>
-        <ngx-charts-line-chart
-                [update$]="update$"
-                [animations]="false"
-                [legend]="false"
-                [showXAxisLabel]="false"
-                [showYAxisLabel]="false"
-                [maxXAxisTickLength]="10"
-                [xAxis]="true"
-                [yAxis]="true"
-                [timeline]="false"
-                [results]="graphData"
-                [xScaleMin]="xMin"
-                [xScaleMax]="xMax"
-                [yScaleMin]="yMin"
-                [yScaleMax]="yMax"
-                [xAxisTickFormatting]="xAxisTickFormatting"
-        >
-            <ng-template #tooltipTemplate let-model="model">
-                <div class="tooltip">
-                    <h1 class="text-xl">{{ model.value | number }}</h1>
-                    {{ model.name | date:'dd MMMM YYYY HH:mm' }} - {{ model.series }}
+        <div class="flex items-center justify-center flex-1 p-4 text-center">
+            <div class="w-3/4 ">
+                <div class="flex justify-around">
+                    <a class="px-4 py-2 text-lg cursor-pointer opacity-80 hover:opacity-100 rounded-2xl hover:bg-second hover:text-white dark:bg-second dark:text-first dark:hover:!text-second dark:hover:!bg-first"
+                        [class]="period=='daily' ? 'text-first dark:!text-second bg-second dark:!bg-first !opacity-100' : 'bg-first dark:!bg-second text-second dark:!text-first'"
+                        (click)="changePeriod('daily')">
+                        Daily</a>
+                    <a class="px-4 py-2 text-lg cursor-pointer opacity-80 hover:opacity-100 rounded-2xl hover:bg-second hover:text-white dark:bg-second dark:text-first dark:hover:!text-second dark:hover:!bg-first"
+                        [class]="period=='weekly' ? 'text-first dark:!text-second bg-second dark:!bg-first !opacity-100' : 'bg-first dark:!bg-second text-second dark:!text-first'"
+                        (click)="changePeriod('weekly')">Weekly</a>
+                    <a class="px-4 py-2 text-lg cursor-pointer opacity-80 hover:opacity-100 rounded-2xl hover:bg-second hover:text-white dark:bg-second dark:text-first dark:hover:!text-second dark:hover:!bg-first"
+                        [class]="period=='monthly' ? 'text-first dark:!text-second bg-second dark:!bg-first !opacity-100' : 'bg-first dark:!bg-second text-second dark:!text-first'"
+                        (click)="changePeriod('monthly')">Monthly</a>
                 </div>
-            </ng-template>
-        </ngx-charts-line-chart>
-
+                <div class="min-h-40vh">
+                    <ngx-charts-line-chart [update$]="update$" [animations]="false" [legend]="false"
+                    [showXAxisLabel]="false" [showYAxisLabel]="false" [maxXAxisTickLength]="10" [xAxis]="true"
+                    [yAxis]="true" [timeline]="false" [results]="graphData" [xScaleMin]="xMin" [xScaleMax]="xMax"
+                    [yScaleMin]="yMin" [yScaleMax]="yMax" [xAxisTickFormatting]="xAxisTickFormatting">
+                    <ng-template #tooltipTemplate let-model="model">
+                        <div class="tooltip">
+                            <h1 class="text-xl">{{ model.value | number }}</h1>
+                            {{ model.name | date:'dd MMMM YYYY HH:mm' }} - {{ model.series }}
+                        </div>
+                    </ng-template>
+                </ngx-charts-line-chart>
+                </div>
+            </div>
+        </div>
     </div>
-
 </div>

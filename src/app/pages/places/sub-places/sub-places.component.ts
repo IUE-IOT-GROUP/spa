@@ -11,7 +11,6 @@ import {ModalService} from "../../../custom/modal/modal.service";
 @Component({
     selector: 'app-sub-places',
     templateUrl: './sub-places.component.html',
-    styleUrls: ['./sub-places.component.css']
 })
 export class SubPlacesComponent implements OnInit, OnDestroy {
     place: Place;

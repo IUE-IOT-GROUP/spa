@@ -1,51 +1,33 @@
-<div class="flex justify-between p-4 text-lg">
+<div class="flex justify-between px-0 py-4 text-lg lg:p-4">
     <div class="flex item-center">
         <a class="p-4 ml-4 cursor-pointer rounded-2xl hover:bg-first hover:text-second lg:hidden"
-           (click)="toggleSidebar()">
-            <fa-icon [icon]="'bars'"
-                     [fixedWidth]="true"></fa-icon>
+            (click)="toggleSidebar()">
+            <fa-icon [icon]="'bars'" [fixedWidth]="true"></fa-icon>
         </a>
-        <a class="hidden p-4 ml-4 duration-200 rounded-2xl transition-color hover:bg-first hover:text-second lg:hover:bg-second lg:hover:text-first lg:inline-block dark:hover:bg-first dark:hover:text-second"
-           routerLink="/dashboard"
-           [routerLinkActive]="['lg:bg-second', 'lg:dark:bg-first', 'lg:text-first', 'lg:dark:text-second', '!inline-block']"
-           [routerLinkActiveOptions]="{ exact: true }">Home</a>
-        <a class="hidden p-4 ml-4 duration-200 rounded-2xl transition-color hover:bg-first hover:text-second lg:hover:bg-second lg:hover:text-first lg:inline-block dark:hover:bg-first dark:hover:text-second"
-           routerLink="/dashboard/places"
-           [routerLinkActive]="['lg:bg-second', 'lg:dark:bg-first', 'lg:text-first', 'lg:dark:text-second', '!inline-block']">Places</a>
-        <a class="hidden p-4 ml-4 duration-200 rounded-2xl transition-color hover:bg-first hover:text-second lg:hover:bg-second lg:hover:text-first lg:inline-block dark:hover:bg-first dark:hover:text-second"
-           routerLink="/dashboard/devices"
-           [routerLinkActive]="['lg:bg-second', 'lg:dark:bg-first', 'lg:text-first', 'lg:dark:text-second', '!inline-block']">Devices</a>
-        <a class="hidden p-4 ml-4 duration-200 rounded-2xl transition-color hover:bg-first hover:text-second lg:hover:bg-second lg:hover:text-first dark:hover:bg-first dark:hover:text-second"
-           routerLink="/dashboard/logs"
-           [routerLinkActive]="['!inline-block', 'lg:!hidden']">Logs</a>
-        <a class="hidden p-4 ml-4 duration-200 rounded-2xl transition-color hover:bg-first hover:text-second lg:hover:bg-second lg:hover:text-first dark:hover:bg-first dark:hover:text-second"
-           routerLink="/dashboard/settings"
-           [routerLinkActive]="['!inline-block', 'lg:!hidden']">Settings</a>
+        <a class="header-tab" routerLink="/dashboard/places" [routerLinkActive]="['inline-block']">Places</a>
+        <a class="header-tab" routerLink="/dashboard/devices" [routerLinkActive]="['inline-block']">Devices</a>
+        <a class="header-tab" routerLink="/dashboard/logs" [routerLinkActive]="['inline-block']">Logs</a>
+        <a class="header-tab" routerLink="/dashboard/settings" [routerLinkActive]="['inline-block']">Settings</a>
     </div>
-    <div>Connected to {{ global.isFog() ? 'Fog' : 'Cloud'}}</div>
-    <div class="flex items-center mr-4"
-         (click)="toggleUserBar()">
+    <div class="flex items-center sm:mr-4" (click)="toggleUserBar()">
         <a
-                class="p-4 transition-colors duration-200 cursor-pointer rounded-2xl group hover:bg-first hover:text-second lg:hover:bg-first lg:hover:text-second dark:hover:bg-first dark:hover:text-second lg:dark:hover:bg-first lg:dark:hover:text-second">
+            class="p-4 duration-200 cursor-pointer rounded-2xl group hover:bg-first hover:text-second lg:hover:bg-second lg:hover:text-first dark:hover:bg-first dark:hover:text-second lg:dark:hover:bg-first lg:dark:hover:text-second">
             <span class="mr-1 opacity-60">Hi,</span>
             <span class="mr-2 capitalize">{{ username }}</span>
             <span
-                    class="px-3 py-2 uppercase rounded-xl bg-first text-second group-hover:bg-second group-hover:text-first lg:bg-second lg:text-first lg:group-hover:bg-first lg:group-hover:text-second dark:bg-first dark:text-second dark:group-hover:bg-second dark:group-hover:text-first">{{ username | getFirstCharacter }}</span>
+                class="px-3 py-2 uppercase rounded-xl bg-first text-second group-hover:bg-second group-hover:text-first lg:bg-second lg:text-first lg:group-hover:bg-first lg:group-hover:text-second dark:bg-first dark:text-second dark:group-hover:bg-second dark:group-hover:text-first">{{ username | getFirstCharacter }}</span>
         </a>
     </div>
 </div>
-
 <div class="absolute top-0 right-0 z-10 flex-shrink h-screen border-l-2 border-forth bg-second text-first"
-     [class.flex]="showUserbar"
-     [class.hidden]="!showUserbar">
+    [class.flex]="showUserbar" [class.hidden]="!showUserbar">
     <div class="flex flex-col justify-between h-full">
         <div class="flex flex-col px-4 py-3 border-b-2 border-forth">
             <div class="flex justify-between mt-4 mb-8">
                 <span class="text-2xl">User Profile</span>
                 <fa-icon (click)="toggleUserBar()"
-                         class="mt-0.5 text-xl cursor-pointer transition-opacity duration-200 opacity-80 hover:opacity-100"
-                         [icon]="'times'"
-                         [fixedWidth]="true"></fa-icon>
+                    class="mt-0.5 text-xl cursor-pointer transition-opacity duration-200 opacity-80 hover:opacity-100"
+                    [icon]="'times'" [fixedWidth]="true"></fa-icon>
             </div>
             <div class="flex">
                 <div class="px-6 py-4 mr-3 text-3xl uppercase rounded-2xl text-second bg-first">
@@ -56,22 +38,22 @@
                     <span class="opacity-60">{{ email }}</span>
                 </div>
             </div>
+            <div class="mt-8 text-lg border-t-2 border-forth">Connection Type: {{ global.isFog() ? 'Fog' : 'Cloud'}}
+            </div>
         </div>
         <div class="flex flex-col">
             <ul class="text-xl">
                 <li class="w-full">
                     <a class="block p-6 transition-opacity duration-200 opacity-80 hover:opacity-100 hover:bg-forth"
-                       routerLink="/dashboard/settings"
-                       routerLinkActive="active"
-                       [routerLinkActiveOptions]="{ exact: true }">
+                        routerLink="/dashboard/settings" routerLinkActive="active"
+                        [routerLinkActiveOptions]="{ exact: true }">
                         Language
                     </a>
                 </li>
                 <li class="w-full">
                     <a class="block p-6 transition-opacity duration-200 opacity-80 hover:opacity-100 hover:bg-forth"
-                       routerLink="/dashboard/settings"
-                       routerLinkActive="active"
-                       [routerLinkActiveOptions]="{ exact: true }">
+                        routerLink="/dashboard/settings" routerLinkActive="active"
+                        [routerLinkActiveOptions]="{ exact: true }">
                         Account Settings
                     </a>
                 </li>
@@ -79,18 +61,14 @@
             <div class="flex justify-between w-full p-4 border-t-2 border-forth">
                 <div class="relative inline-block w-10 transition duration-200 ease-in select-none">
                     <input type="checkbox"
-                           class="absolute block w-6 h-6 border-2 rounded-full cursor-pointer bg-second text-second border-first toggle-checkbox checked:right-0 checked:border-first hover:text-second focus:ring-0 focus:ring-offset-0 hover:checked:border-first focus:checked:border-first"
-                           [checked]="enableDark"
-                           (change)="switchTheme()">
+                        class="absolute block w-6 h-6 border-2 rounded-full cursor-pointer bg-second text-second border-first toggle-checkbox checked:right-0 checked:border-first hover:text-second focus:ring-0 focus:ring-offset-0 hover:checked:border-first focus:checked:border-first"
+                        [checked]="enableDark" (change)="switchTheme()">
                     <label class="block h-6 overflow-hidden border-2 rounded-full cursor-pointer bg-first"></label>
                 </div>
                 <a class="flex justify-around transition-opacity duration-200 cursor-pointer opacity-70 hover:opacity-100"
-                   id="logout"
-                   (click)="logout()">
+                    id="logout" (click)="logout()">
                     Sign Out
-                    <fa-icon class="ml-0.5"
-                             [icon]="'angle-double-right'"
-                             [fixedWidth]="true"></fa-icon>
+                    <fa-icon class="ml-0.5" [icon]="'angle-double-right'" [fixedWidth]="true"></fa-icon>
                 </a>
             </div>
         </div>

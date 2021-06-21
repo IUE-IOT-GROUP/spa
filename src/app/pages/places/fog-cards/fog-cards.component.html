@@ -6,7 +6,7 @@
 
 <ng-container *ngIf="fogs?.length > 0">
     <app-card *ngFor="let fog of fogs">
-        <slot-content class="text-2xl">{{ fog.name }}</slot-content>
+        <slot-content class="text-2xl opacity-80">{{ fog.name }}</slot-content>
         <slot-buttons>
             <app-dropdown [icon]="ellipsis">
                 <slot-options>
@@ -19,8 +19,7 @@
 </ng-container>
 
 <ng-template #addModalTemplate>
-    <form [formGroup]="addFogForm"
-          (ngSubmit)="onSubmit()">
+    <form [formGroup]="addFogForm" (ngSubmit)="onSubmit()">
         <div class="space-y-5">
             <app-form-group for="name" label="Name">
                 <input type="text" formControlName="name" class="input">

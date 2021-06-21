@@ -6,8 +6,7 @@
 <place-card *ngFor="let subPlace of places" [place]="subPlace"></place-card>
 
 <ng-template #addModalTemplate>
-    <form [formGroup]="addPlaceForm"
-          (ngSubmit)="onSubmit()">
+    <form [formGroup]="addPlaceForm" (ngSubmit)="onSubmit()">
         <div class="space-y-5">
             <app-form-group for="name" label="Name">
                 <input type="text" formControlName="name" class="input">

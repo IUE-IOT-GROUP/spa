@@ -12,7 +12,7 @@ import { LoginService } from "../../services/login.service";
 export class LoginComponent implements OnInit {
   email: string;
   password: string;
-  environment: boolean = true;
+  environment: boolean = false;
   error: HttpError;
 
   constructor(
@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
     console.log(this.environment);
     let e = 'fog';
 
-    if (!this.environment) {
+    if (this.environment) {
       e = 'cloud';
     }
 
