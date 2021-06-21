@@ -20,7 +20,10 @@
         </div>
     </slot-content>
     <slot-buttons>
-        
+        <a (click)="removeDevice('Are You Sure?', showModal, buttons)">
+            <fa-icon class="ml-2 cursor-pointer opacity-70 hover:opacity-100" [icon]="'trash'" [fixedWidth]="true">
+            </fa-icon>
+        </a>
     </slot-buttons>
 </app-card>
 
